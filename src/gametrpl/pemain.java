@@ -4,18 +4,17 @@
  * and open the template in the editor.
  */
 package gametrpl;
-import gametrpl.Controller.c_mainMenu;
 
 /**
  *
  * @author ROG
  */
-public class GameTrpl {
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-       c_mainMenu c_mainMenu = new c_mainMenu();
+public class pemain {
+    String pemain;
+    int dana;
+
+    public pemain(String pemain) {
+        this.pemain = pemain;
     }
     
 }
