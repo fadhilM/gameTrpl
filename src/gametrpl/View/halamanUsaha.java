@@ -137,6 +137,164 @@ public class halamanUsaha extends javax.swing.JFrame {
         return g_usaha4;
     }
 
+    public JLabel getDanaTxt() {
+        return danaTxt;
+    }
+    
+    public JLabel getPenghasilanTxt() {
+        return penghasilanTxt;
+    }
+
+    public JButton getB_buatUsaha1() {
+        return b_buatUsaha1;
+    }
+
+    public JButton getB_buatUsaha2() {
+        return b_buatUsaha2;
+    }
+
+    public JButton getB_buatUsaha3() {
+        return b_buatUsaha3;
+    }
+
+    public JButton getB_buatUsaha4() {
+        return b_buatUsaha4;
+    }
+
+    public JLabel getTurnTxt() {
+        return turnTxt;
+    }
+
+    public JLabel getModal1() {
+        return modal1;
+    }
+
+    public JLabel getModal2() {
+        return modal2;
+    }
+
+    public JLabel getModal3() {
+        return modal3;
+    }
+
+    public JLabel getModal4() {
+        return modal4;
+    }
+
+    public JLabel getOperasional1() {
+        return operasional1;
+    }
+
+    public JLabel getOperasional2() {
+        return operasional2;
+    }
+
+    public JLabel getOperasional3() {
+        return operasional3;
+    }
+
+    public JLabel getOperasional4() {
+        return operasional4;
+    }
+
+    public JLabel getPenghasilan1() {
+        return penghasilan1;
+    }
+
+    public JLabel getPenghasilan2() {
+        return penghasilan2;
+    }
+
+    public JLabel getPenghasilan3() {
+        return penghasilan3;
+    }
+
+    public JLabel getPenghasilan4() {
+        return penghasilan4;
+    }
+
+    public JLabel getU12txt() {
+        return u12txt;
+    }
+
+    public JLabel getU13txt() {
+        return u13txt;
+    }
+
+    public JLabel getU14txt() {
+        return u14txt;
+    }
+
+    public JLabel getU15txt() {
+        return u15txt;
+    }
+
+    public JLabel getU21txt() {
+        return u21txt;
+    }
+
+    public JLabel getU22txt() {
+        return u22txt;
+    }
+
+    public JLabel getU23txt() {
+        return u23txt;
+    }
+
+    public JLabel getU24txt() {
+        return u24txt;
+    }
+
+    public JLabel getU25txt() {
+        return u25txt;
+    }
+
+    public JLabel getU31txt() {
+        return u31txt;
+    }
+
+    public JLabel getU32txt() {
+        return u32txt;
+    }
+
+    public JLabel getU33txt() {
+        return u33txt;
+    }
+
+    public JLabel getU34txt() {
+        return u34txt;
+    }
+
+    public JLabel getU35txt() {
+        return u35txt;
+    }
+
+    public JLabel getU41txt() {
+        return u41txt;
+    }
+
+    public JLabel getU42txt() {
+        return u42txt;
+    }
+
+    public JLabel getU43txt() {
+        return u43txt;
+    }
+
+    public JLabel getU44txt() {
+        return u44txt;
+    }
+
+    public JLabel getU45txt() {
+        return u45txt;
+    }
+
+    public JLabel getU11txt() {
+        return u11txt;
+    }
+
+
+
     
     
     /**
@@ -177,12 +335,67 @@ public class halamanUsaha extends javax.swing.JFrame {
         g_usaha2 = new javax.swing.JLabel();
         g_usaha3 = new javax.swing.JLabel();
         g_usaha4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        danaTxt = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        penghasilanTxt = new javax.swing.JLabel();
+        b_buatUsaha1 = new javax.swing.JButton();
+        b_buatUsaha2 = new javax.swing.JButton();
+        b_buatUsaha3 = new javax.swing.JButton();
+        b_buatUsaha4 = new javax.swing.JButton();
+        cvbfd = new javax.swing.JLabel();
+        turnTxt = new javax.swing.JLabel();
+        operasional1 = new javax.swing.JLabel();
+        penghasilan1 = new javax.swing.JLabel();
+        modal1 = new javax.swing.JLabel();
+        penghasilan2 = new javax.swing.JLabel();
+        operasional2 = new javax.swing.JLabel();
+        modal2 = new javax.swing.JLabel();
+        penghasilan3 = new javax.swing.JLabel();
+        operasional3 = new javax.swing.JLabel();
+        modal3 = new javax.swing.JLabel();
+        penghasilan4 = new javax.swing.JLabel();
+        operasional4 = new javax.swing.JLabel();
+        modal4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        u11txt = new javax.swing.JLabel();
+        u12txt = new javax.swing.JLabel();
+        u13txt = new javax.swing.JLabel();
+        u15txt = new javax.swing.JLabel();
+        u14txt = new javax.swing.JLabel();
+        u21txt = new javax.swing.JLabel();
+        u22txt = new javax.swing.JLabel();
+        u23txt = new javax.swing.JLabel();
+        u24txt = new javax.swing.JLabel();
+        u25txt = new javax.swing.JLabel();
+        u31txt = new javax.swing.JLabel();
+        u33txt = new javax.swing.JLabel();
+        u32txt = new javax.swing.JLabel();
+        u34txt = new javax.swing.JLabel();
+        u35txt = new javax.swing.JLabel();
+        u41txt = new javax.swing.JLabel();
+        u42txt = new javax.swing.JLabel();
+        u43txt = new javax.swing.JLabel();
+        u44txt = new javax.swing.JLabel();
+        u45txt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1050, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         b_nextTurn.setText("next turn");
-        getContentPane().add(b_nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(766, 32, 90, 76));
+        getContentPane().add(b_nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 90, 76));
 
         b_usaha.setText("usaha");
         getContentPane().add(b_usaha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 96, 95));
@@ -197,76 +410,212 @@ public class halamanUsaha extends javax.swing.JFrame {
         getContentPane().add(b_property, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 96, 95));
 
         aa.setText("aa");
-        getContentPane().add(aa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, 38));
+        getContentPane().add(aa, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 50, 38));
 
         ab.setText("ab");
-        getContentPane().add(ab, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, 38));
+        getContentPane().add(ab, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, -1, 38));
 
         ac.setText("ac");
-        getContentPane().add(ac, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, 38));
+        getContentPane().add(ac, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, 38));
 
         ad.setText("ad");
-        getContentPane().add(ad, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, -1, 38));
+        getContentPane().add(ad, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, 38));
 
         ae.setText("ae");
-        getContentPane().add(ae, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, 38));
+        getContentPane().add(ae, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, 38));
 
         ba.setText("ba");
-        getContentPane().add(ba, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, -1, 38));
+        getContentPane().add(ba, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, 38));
 
         bb.setText("bb");
-        getContentPane().add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, -1, 38));
+        getContentPane().add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, -1, 38));
 
         bc.setText("bc");
-        getContentPane().add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, -1, 38));
+        getContentPane().add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, 38));
 
         bd.setText("bd");
-        getContentPane().add(bd, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, -1, 38));
+        getContentPane().add(bd, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, -1, 38));
 
         be.setText("be");
-        getContentPane().add(be, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, -1, 38));
+        getContentPane().add(be, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 280, -1, 38));
 
         ca.setText("ca");
-        getContentPane().add(ca, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, -1, 38));
+        getContentPane().add(ca, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, -1, 38));
 
         cb.setText("cb");
-        getContentPane().add(cb, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, -1, 38));
+        getContentPane().add(cb, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, -1, 38));
 
         cc.setText("cc");
-        getContentPane().add(cc, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, -1, 38));
+        getContentPane().add(cc, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 600, -1, 38));
 
         cd.setText("cd");
-        getContentPane().add(cd, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, -1, 38));
+        getContentPane().add(cd, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 650, -1, 38));
 
         ce.setText("ce");
-        getContentPane().add(ce, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, -1, 38));
+        getContentPane().add(ce, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 600, -1, 38));
 
-        da.setText("ab");
-        getContentPane().add(da, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 520, -1, 38));
+        da.setText("da");
+        getContentPane().add(da, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 600, -1, 38));
 
-        db.setText("ab");
-        getContentPane().add(db, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, -1, 38));
+        db.setText("db");
+        getContentPane().add(db, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 650, -1, 38));
 
-        dc.setText("ab");
-        getContentPane().add(dc, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, 38));
+        dc.setText("dc");
+        getContentPane().add(dc, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 600, -1, 38));
 
-        dd.setText("ab");
-        getContentPane().add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 520, -1, 38));
+        dd.setText("dd");
+        getContentPane().add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 650, -1, 38));
 
-        de.setText("bd");
-        getContentPane().add(de, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 520, -1, 38));
+        de.setText("de");
+        getContentPane().add(de, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 600, -1, 38));
 
         g_usaha1.setText("usaha1");
-        getContentPane().add(g_usaha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 90, 110));
+        getContentPane().add(g_usaha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 90, 110));
 
         g_usaha2.setText("usaha2");
-        getContentPane().add(g_usaha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 90, 110));
+        getContentPane().add(g_usaha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 90, 110));
 
         g_usaha3.setText("usaha3");
-        getContentPane().add(g_usaha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 90, 110));
+        getContentPane().add(g_usaha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 90, 110));
 
         g_usaha4.setText("usaha4");
-        getContentPane().add(g_usaha4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 90, 110));
+        getContentPane().add(g_usaha4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 90, 110));
+
+        jLabel1.setText("Dana :");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+
+        danaTxt.setText("800");
+        getContentPane().add(danaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+
+        jLabel3.setText("penghasilan :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 90, -1));
+
+        penghasilanTxt.setText("40");
+        getContentPane().add(penghasilanTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
+
+        b_buatUsaha1.setText("buat");
+        getContentPane().add(b_buatUsaha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
+
+        b_buatUsaha2.setText("buat");
+        getContentPane().add(b_buatUsaha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 240, -1, -1));
+
+        b_buatUsaha3.setText("buat");
+        getContentPane().add(b_buatUsaha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 550, -1, -1));
+
+        b_buatUsaha4.setText("buat");
+        getContentPane().add(b_buatUsaha4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 560, -1, -1));
+
+        cvbfd.setText("turn :");
+        getContentPane().add(cvbfd, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
+
+        turnTxt.setText("0");
+        getContentPane().add(turnTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, -1, -1));
+
+        operasional1.setText("jLabel5");
+        getContentPane().add(operasional1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, -1, -1));
+
+        penghasilan1.setText("jLabel4");
+        getContentPane().add(penghasilan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, -1, -1));
+
+        modal1.setText("jLabel5");
+        getContentPane().add(modal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
+
+        penghasilan2.setText("jLabel4");
+        getContentPane().add(penghasilan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 150, -1, -1));
+
+        operasional2.setText("jLabel5");
+        getContentPane().add(operasional2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 180, -1, -1));
+
+        modal2.setText("jLabel5");
+        getContentPane().add(modal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 210, -1, -1));
+
+        penghasilan3.setText("jLabel4");
+        getContentPane().add(penghasilan3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, -1, -1));
+
+        operasional3.setText("jLabel5");
+        getContentPane().add(operasional3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
+
+        modal3.setText("jLabel5");
+        getContentPane().add(modal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, -1, -1));
+
+        penghasilan4.setText("jLabel4");
+        getContentPane().add(penghasilan4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 460, -1, -1));
+
+        operasional4.setText("jLabel5");
+        getContentPane().add(operasional4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 490, -1, -1));
+
+        modal4.setText("jLabel5");
+        getContentPane().add(modal4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 520, -1, -1));
+
+        jLabel2.setText("Penghasilan :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, -1, -1));
+
+        jLabel4.setText("operasional :");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, -1));
+
+        jLabel5.setText("modal         :");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
+
+        jLabel6.setText("modal         :");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, -1, -1));
+
+        jLabel7.setText("operasional :");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
+
+        jLabel8.setText("Penghasilan :");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, -1, -1));
+
+        jLabel9.setText("modal         :");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, -1, -1));
+
+        jLabel10.setText("operasional :");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, -1, -1));
+
+        jLabel11.setText("Penghasilan :");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 150, -1, -1));
+
+        jLabel12.setText("modal         :");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 520, -1, -1));
+
+        jLabel13.setText("operasional :");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 490, -1, -1));
+
+        jLabel14.setText("Penghasilan :");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, -1, -1));
+        getContentPane().add(u11txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
+        getContentPane().add(u12txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, -1, -1));
+        getContentPane().add(u13txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, -1, -1));
+        getContentPane().add(u15txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, -1, -1));
+        getContentPane().add(u14txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, -1, -1));
+        getContentPane().add(u21txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, -1, -1));
+        getContentPane().add(u22txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 340, -1, -1));
+        getContentPane().add(u23txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 290, -1, -1));
+        getContentPane().add(u24txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 340, -1, -1));
+        getContentPane().add(u25txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 290, -1, -1));
+        getContentPane().add(u31txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, -1, -1));
+        getContentPane().add(u33txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 610, -1, -1));
+        getContentPane().add(u32txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 660, -1, -1));
+
+        u34txt.setText("1");
+        getContentPane().add(u34txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, -1, -1));
+
+        u35txt.setText("1");
+        getContentPane().add(u35txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 610, -1, -1));
+
+        u41txt.setText("1");
+        getContentPane().add(u41txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, -1, 20));
+
+        u42txt.setText("1");
+        getContentPane().add(u42txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 660, -1, -1));
+
+        u43txt.setText("1");
+        getContentPane().add(u43txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 610, -1, -1));
+
+        u44txt.setText("1");
+        getContentPane().add(u44txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 660, -1, -1));
+
+        u45txt.setText("1");
+        getContentPane().add(u45txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 610, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -314,6 +663,10 @@ public class halamanUsaha extends javax.swing.JFrame {
     private javax.swing.JButton ad;
     private javax.swing.JButton ae;
     private javax.swing.JButton b_bank;
+    private javax.swing.JButton b_buatUsaha1;
+    private javax.swing.JButton b_buatUsaha2;
+    private javax.swing.JButton b_buatUsaha3;
+    private javax.swing.JButton b_buatUsaha4;
     private javax.swing.JButton b_dealer;
     private javax.swing.JButton b_nextTurn;
     private javax.swing.JButton b_property;
@@ -328,7 +681,9 @@ public class halamanUsaha extends javax.swing.JFrame {
     private javax.swing.JButton cc;
     private javax.swing.JButton cd;
     private javax.swing.JButton ce;
+    private javax.swing.JLabel cvbfd;
     private javax.swing.JButton da;
+    private javax.swing.JLabel danaTxt;
     private javax.swing.JButton db;
     private javax.swing.JButton dc;
     private javax.swing.JButton dd;
@@ -337,5 +692,53 @@ public class halamanUsaha extends javax.swing.JFrame {
     private javax.swing.JLabel g_usaha2;
     private javax.swing.JLabel g_usaha3;
     private javax.swing.JLabel g_usaha4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel modal1;
+    private javax.swing.JLabel modal2;
+    private javax.swing.JLabel modal3;
+    private javax.swing.JLabel modal4;
+    private javax.swing.JLabel operasional1;
+    private javax.swing.JLabel operasional2;
+    private javax.swing.JLabel operasional3;
+    private javax.swing.JLabel operasional4;
+    private javax.swing.JLabel penghasilan1;
+    private javax.swing.JLabel penghasilan2;
+    private javax.swing.JLabel penghasilan3;
+    private javax.swing.JLabel penghasilan4;
+    private javax.swing.JLabel penghasilanTxt;
+    private javax.swing.JLabel turnTxt;
+    private javax.swing.JLabel u11txt;
+    private javax.swing.JLabel u12txt;
+    private javax.swing.JLabel u13txt;
+    private javax.swing.JLabel u14txt;
+    private javax.swing.JLabel u15txt;
+    private javax.swing.JLabel u21txt;
+    private javax.swing.JLabel u22txt;
+    private javax.swing.JLabel u23txt;
+    private javax.swing.JLabel u24txt;
+    private javax.swing.JLabel u25txt;
+    private javax.swing.JLabel u31txt;
+    private javax.swing.JLabel u32txt;
+    private javax.swing.JLabel u33txt;
+    private javax.swing.JLabel u34txt;
+    private javax.swing.JLabel u35txt;
+    private javax.swing.JLabel u41txt;
+    private javax.swing.JLabel u42txt;
+    private javax.swing.JLabel u43txt;
+    private javax.swing.JLabel u44txt;
+    private javax.swing.JLabel u45txt;
     // End of variables declaration//GEN-END:variables
 }
