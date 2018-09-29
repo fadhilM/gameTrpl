@@ -40,34 +40,20 @@ public class halamanNewGame extends javax.swing.JFrame {
     private void initComponents() {
 
         txt_nama = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         b_mulai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1050, 750));
         setMinimumSize(new java.awt.Dimension(1050, 750));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 304, 45));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/3Klik New Game.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         b_mulai.setText("Mulai");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(375, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_nama)
-                    .addComponent(b_mulai, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(371, 371, 371))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(378, Short.MAX_VALUE)
-                .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(b_mulai, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(264, 264, 264))
-        );
+        getContentPane().add(b_mulai, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 300, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -109,6 +95,7 @@ public class halamanNewGame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_mulai;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txt_nama;
     // End of variables declaration//GEN-END:variables
 }

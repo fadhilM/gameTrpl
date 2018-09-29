@@ -18,6 +18,8 @@ public class usaha {
     boolean boostP=false,boostO=false,boostS=false;
     int bP=5,bO=5,bS=5;
     int tempP=5,tempO=5,tempS=5;
+    int min=-10,max=10;
+    int minMod,maxMod;
 
     public usaha(String namaUsaha, int modal, int penghasilan, int operasional, int uPenghasilan, int uOperasional, int bPenghasilan, int bOperasional, int bSpesial, int persenUP, int pesenOP, int[] persenBP, int[] persenBO, int[] persenBS) {
         this.namaUsaha = namaUsaha;
@@ -35,6 +37,40 @@ public class usaha {
         this.persenBO = persenBO;
         this.persenBS = persenBS;
     }
+
+    public int getMinMod() {
+        return minMod;
+    }
+
+    public void setMinMod(int minMod) {
+        this.minMod = minMod;
+    }
+
+    public int getMaxMod() {
+        return maxMod;
+    }
+
+    public void setMaxMod(int maxMod) {
+        this.maxMod = maxMod;
+    }
+    
+    public int getMin() {
+        return min;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
+    }
+    
+    
 
     public int getTempP() {
         return tempP;

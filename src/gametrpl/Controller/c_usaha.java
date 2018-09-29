@@ -121,65 +121,124 @@ public class c_usaha {
         halamanUsaha.getPenghasilanTxt().setText(String.valueOf(pemain.getPenghasilan()));
     }
 
+    private int randomPersen(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
+
     public int hitungPenghasilan() {
-        int penghasilan, penghasilanSeluruh = 0, penghasilanKotor, penghasilanBersih, operasional;
+        int penghasilan, penghasilanSeluruh = 0, penghasilanKotor, penghasilanBersih, operasional, persen = 0;
         usaha[] usahaPemain = pemain.getUsaha();
         for (int i = 0; i < usahaPemain.length; i++) {
-            int persen = ThreadLocalRandom.current().nextInt(min, max + 1);
+            //generate angka random berdasarkan min max usaha
+            if (usahaPemain[i].isBoostP()) {
+                persen = randomPersen(usahaPemain[i].getMin() - 5, usahaPemain[i].getMax() + 1);
+                usahaPemain[i].setTempP(usahaPemain[i].getTempP() - 1);
+                if (usahaPemain[i].getTempP() == 0) {
+                    usahaPemain[i].setBoostP(false);
+                }
+            } else {
+                persen = ThreadLocalRandom.current().nextInt(usahaPemain[i].getMin(), usahaPemain[i].getMax() + 1);
+            }
+
+            usahaPemain[i].setMin(persen - usahaPemain[i].getMinMod());
+            usahaPemain[i].setMax(persen - usahaPemain[i].getMaxMod());
 
             penghasilan = usahaPemain[i].getPenghasilan();
             int minPlusPenghasilan = persen * penghasilan / 100;
-            //System.out.print(String.valueOf(penghasilan + "-" + minPlusPenghasilan + "="));
+            penghasilanKotor = penghasilan - minPlusPenghasilan;
 
-            if (usahaPemain[i].isBoostP()) {
-                int persenB = ThreadLocalRandom.current().nextInt(usahaPemain[i].getPersenBP()[0], usahaPemain[i].getPersenBP()[1] + 1);
-                int penghasilanB = penghasilan * persenB / 100;
-                penghasilanKotor = penghasilan - minPlusPenghasilan + penghasilanB;
-                if (usahaPemain[i].getTempP() > 1) {
-                    pemain.getUsaha()[i].setTempP(pemain.getUsaha()[i].getTempP() - 1);
-                } else {
-                    pemain.getUsaha()[i].setTempP(pemain.getUsaha()[i].getbP());
-                    pemain.getUsaha()[i].setBoostP(false);
-                }
-            } else {
-                penghasilanKotor = penghasilan - minPlusPenghasilan;
-            }
+            usahaPemain[i].setPenghasilan(penghasilanKotor);
 
-            //System.out.println(String.valueOf(penghasilanKotor));
             operasional = usahaPemain[i].getOperasional();
             if (usahaPemain[i].isBoostO()) {
-                int persenB = ThreadLocalRandom.current().nextInt(usahaPemain[i].getPersenBO()[0], usahaPemain[i].getPersenBO()[1] + 1);
+                int persenB = ThreadLocalRandom.current().nextInt(-5, -15 - 1);
                 System.out.println(String.valueOf(persenB));
                 operasional = operasional - (operasional * persenB / 100);
-                if (usahaPemain[i].getTempO() > 1) {
-                    pemain.getUsaha()[i].setTempO(pemain.getUsaha()[i].getTempO() - 1);
-                } else {
-                    pemain.getUsaha()[i].setTempO(pemain.getUsaha()[i].getbO());
-                    pemain.getUsaha()[i].setBoostO(false);
+                usahaPemain[i].setTempO(usahaPemain[i].getTempO() - 1);
+                if (usahaPemain[i].getTempO() == 0) {
+                    usahaPemain[i].setBoostO(false);
                 }
             }
 
             if (usahaPemain[i].isBoostS()) {
-                int persenB = ThreadLocalRandom.current().nextInt(usahaPemain[i].getPersenBP()[0], usahaPemain[i].getPersenBP()[1] + 1);
-                int persenC = ThreadLocalRandom.current().nextInt(usahaPemain[i].getPersenBO()[0], usahaPemain[i].getPersenBO()[1] + 1);
-                int penghasilanB = penghasilan * persenB / 100;
+                int persenP = randomPersen(usahaPemain[i].getMin() - 5, usahaPemain[i].getMax() + 1);
+                int persenO = ThreadLocalRandom.current().nextInt(-5, -15 - 1);
+                int penghasilanB = penghasilan * persenP / 100;
                 penghasilanKotor = penghasilanKotor + penghasilanB;
-                operasional = operasional - (operasional * persenB / 100);
+                operasional = operasional - (operasional * persenO / 100);
+                usahaPemain[i].setTempS(usahaPemain[i].getTempS() - 1);
                 if (usahaPemain[i].getTempS() > 1) {
-                    pemain.getUsaha()[i].setTempS(pemain.getUsaha()[i].getTempS() - 1);
-                } else {
-                    pemain.getUsaha()[i].setTempS(pemain.getUsaha()[i].getbS());
-                    pemain.getUsaha()[i].setBoostS(false);
-                }
+                    usahaPemain[i].setBoostS(false);
+                } 
             }
+
+            //operasional = usahaPemain[i].getOperasional();
             penghasilanBersih = penghasilanKotor - operasional;
             penghasilanSeluruh += penghasilanBersih;
-            //System.out.println("Penghasilan Per Usaha :" + String.valueOf(penghasilanBersih));
+
         }
-        System.out.println("Penghasilan Bulan Ini :" + String.valueOf(penghasilanSeluruh));
+        pemain.setUsaha(usahaPemain);
         return penghasilanSeluruh;
     }
 
+//    public int hitungPenghasilan() {
+//        int penghasilan, penghasilanSeluruh = 0, penghasilanKotor, penghasilanBersih, operasional;
+//        usaha[] usahaPemain = pemain.getUsaha();
+//        for (int i = 0; i < usahaPemain.length; i++) {
+//            int persen = ThreadLocalRandom.current().nextInt(min, max + 1);
+//
+//            penghasilan = usahaPemain[i].getPenghasilan();
+//            int minPlusPenghasilan = persen * penghasilan / 100;
+//            //System.out.print(String.valueOf(penghasilan + "-" + minPlusPenghasilan + "="));
+//
+//            if (usahaPemain[i].isBoostP()) {
+//                int persenB = ThreadLocalRandom.current().nextInt(usahaPemain[i].getPersenBP()[0], usahaPemain[i].getPersenBP()[1] + 1);
+//                int penghasilanB = penghasilan * persenB / 100;
+//                penghasilanKotor = penghasilan - minPlusPenghasilan + penghasilanB;
+//                if (usahaPemain[i].getTempP() > 1) {
+//                    pemain.getUsaha()[i].setTempP(pemain.getUsaha()[i].getTempP() - 1);
+//                } else {
+//                    pemain.getUsaha()[i].setTempP(pemain.getUsaha()[i].getbP());
+//                    pemain.getUsaha()[i].setBoostP(false);
+//                }
+//            } else {
+//                penghasilanKotor = penghasilan - minPlusPenghasilan;
+//            }
+//
+//            //System.out.println(String.valueOf(penghasilanKotor));
+//            operasional = usahaPemain[i].getOperasional();
+//            if (usahaPemain[i].isBoostO()) {
+//                int persenB = ThreadLocalRandom.current().nextInt(usahaPemain[i].getPersenBO()[0], usahaPemain[i].getPersenBO()[1] + 1);
+//                System.out.println(String.valueOf(persenB));
+//                operasional = operasional - (operasional * persenB / 100);
+//                if (usahaPemain[i].getTempO() > 1) {
+//                    pemain.getUsaha()[i].setTempO(pemain.getUsaha()[i].getTempO() - 1);
+//                } else {
+//                    pemain.getUsaha()[i].setTempO(pemain.getUsaha()[i].getbO());
+//                    pemain.getUsaha()[i].setBoostO(false);
+//                }
+//            }
+//
+//            if (usahaPemain[i].isBoostS()) {
+//                int persenB = ThreadLocalRandom.current().nextInt(usahaPemain[i].getPersenBP()[0], usahaPemain[i].getPersenBP()[1] + 1);
+//                int persenC = ThreadLocalRandom.current().nextInt(usahaPemain[i].getPersenBO()[0], usahaPemain[i].getPersenBO()[1] + 1);
+//                int penghasilanB = penghasilan * persenB / 100;
+//                penghasilanKotor = penghasilanKotor + penghasilanB;
+//                operasional = operasional - (operasional * persenB / 100);
+//                if (usahaPemain[i].getTempS() > 1) {
+//                    pemain.getUsaha()[i].setTempS(pemain.getUsaha()[i].getTempS() - 1);
+//                } else {
+//                    pemain.getUsaha()[i].setTempS(pemain.getUsaha()[i].getbS());
+//                    pemain.getUsaha()[i].setBoostS(false);
+//                }
+//            }
+//            penghasilanBersih = penghasilanKotor - operasional;
+//            penghasilanSeluruh += penghasilanBersih;
+//            //System.out.println("Penghasilan Per Usaha :" + String.valueOf(penghasilanBersih));
+//        }
+//        System.out.println("Penghasilan Bulan Ini :" + String.valueOf(penghasilanSeluruh));
+//        return penghasilanSeluruh;
+//    }
     public void popup(String popup) {
         JOptionPane.showMessageDialog(halamanUsaha, popup);
     }
@@ -197,18 +256,18 @@ public class c_usaha {
         usaha[] uPemain = pemain.getUsaha();
         for (int i = 0; i < uPemain.length; i++) {
             if (uPemain[i].getNamaUsaha().equalsIgnoreCase(usaha.getNamaUsaha())) {
-                System.out.print(String.valueOf(uPemain[i].getPenghasilan()) + ",");
+                //System.out.print(String.valueOf(uPemain[i].getPenghasilan()) + ",");
                 upgradePenghasilan = uPemain[i].getPenghasilan() + (uPemain[i].getPenghasilan() * uPemain[i].getPersenUP() / 100);
                 uPemain[i].setPenghasilan(upgradePenghasilan);
                 pemain.setUsaha(uPemain);
-                System.out.println(String.valueOf(uPemain[i].getPenghasilan()));
+                //System.out.println(String.valueOf(uPemain[i].getPenghasilan()));
                 updateDana();
                 popup("Selamat, Usaha Anda Berhasil Di Upgrade");
             }
         }
     }
 
-    public void upgradeOperasional(usaha usaha, int i) {
+    public void upgradeOperasional(int i) {
         int upgradeOperasional = 0;
         usaha[] uPemain = pemain.getUsaha();
         upgradeOperasional = uPemain[i].getOperasional() - (uPemain[i].getOperasional() * uPemain[i].getPesenOP() / 100);
@@ -222,7 +281,7 @@ public class c_usaha {
     public void upgradeOperasionalUsaha(usaha usaha, int index) {
         if (uangCukup(pemain.getDana(), pemain.getUsaha()[index].getuOperasional())) {
             pemain.setDana(pemain.getDana() - pemain.getUsaha()[index].getuOperasional());
-            upgradeOperasional(usaha, index);
+            upgradeOperasional(index);
         } else {
             popup("Maaf Uang Yang Anda Miliki Tidak Cukup");
         }
