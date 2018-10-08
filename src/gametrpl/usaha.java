@@ -12,16 +12,16 @@ package gametrpl;
 public class usaha {
     String namaUsaha;
     int modal, penghasilan, operasional;
+    
     int uPenghasilan, uOperasional, bPenghasilan, bOperasional, bSpesial;
-    int persenUP,pesenOP;
-    int [] persenBP,persenBO,persenBS;
     boolean boostP=false,boostO=false,boostS=false;
-    int bP=5,bO=5,bS=5;
-    int tempP=5,tempO=5,tempS=5;
-    int min=-10,max=10;
-    int minMod,maxMod;
+    
+    int persenUp,persenO;
+    int tempP,tempO,tempS;
+    int p,o,s;
+    int min,max;
 
-    public usaha(String namaUsaha, int modal, int penghasilan, int operasional, int uPenghasilan, int uOperasional, int bPenghasilan, int bOperasional, int bSpesial, int persenUP, int pesenOP, int[] persenBP, int[] persenBO, int[] persenBS) {
+    public usaha(String namaUsaha, int modal, int penghasilan, int operasional, int uPenghasilan, int uOperasional, int bPenghasilan, int bOperasional, int bSpesial, int persenUp, int persenO, int p, int o, int s, int min, int max) {
         this.namaUsaha = namaUsaha;
         this.modal = modal;
         this.penghasilan = penghasilan;
@@ -31,28 +31,57 @@ public class usaha {
         this.bPenghasilan = bPenghasilan;
         this.bOperasional = bOperasional;
         this.bSpesial = bSpesial;
-        this.persenUP = persenUP;
-        this.pesenOP = pesenOP;
-        this.persenBP = persenBP;
-        this.persenBO = persenBO;
-        this.persenBS = persenBS;
+        this.persenUp = persenUp;
+        this.persenO = persenO;
+        this.p = p;
+        tempP = p;
+        this.o = o;
+        tempO = o;
+        this.s = s;
+        tempS = s;
+        this.min = min;
+        this.max = max;
     }
 
-    public int getMinMod() {
-        return minMod;
+    public int getPersenUp() {
+        return persenUp;
     }
 
-    public void setMinMod(int minMod) {
-        this.minMod = minMod;
+    public void setPersenUp(int persenUp) {
+        this.persenUp = persenUp;
     }
 
-    public int getMaxMod() {
-        return maxMod;
+    public int getPersenO() {
+        return persenO;
     }
 
-    public void setMaxMod(int maxMod) {
-        this.maxMod = maxMod;
+    public void setPersenO(int persenO) {
+        this.persenO = persenO;
     }
+
+    public int getP() {
+        return p;
+    }
+
+    public void setP(int p) {
+        this.p = p;
+    }
+
+    public int getO() {
+        return o;
+    }
+
+    public void setO(int o) {
+        this.o = o;
+    }
+
+    public int getS() {
+        return s;
+    }
+
+    public void setS(int s) {
+        this.s = s;
+    }    
     
     public int getMin() {
         return min;
@@ -69,8 +98,6 @@ public class usaha {
     public void setMax(int max) {
         this.max = max;
     }
-    
-    
 
     public int getTempP() {
         return tempP;
@@ -108,30 +135,6 @@ public class usaha {
 
     public boolean isBoostO() {
         return boostO;
-    }
-
-    public int getbP() {
-        return bP;
-    }
-
-    public void setbP(int bP) {
-        this.bP = bP;
-    }
-
-    public int getbO() {
-        return bO;
-    }
-
-    public void setbO(int bO) {
-        this.bO = bO;
-    }
-
-    public int getbS() {
-        return bS;
-    }
-
-    public void setbS(int bS) {
-        this.bS = bS;
     }
 
     public void setBoostO(boolean boostO) {
@@ -184,46 +187,6 @@ public class usaha {
 
     public void setNamaUsaha(String namaUsaha) {
         this.namaUsaha = namaUsaha;
-    }
-
-    public int getPersenUP() {
-        return persenUP;
-    }
-
-    public void setPersenUP(byte persenUP) {
-        this.persenUP = persenUP;
-    }
-
-    public int getPesenOP() {
-        return pesenOP;
-    }
-
-    public void setPesenOP(byte pesenOP) {
-        this.pesenOP = pesenOP;
-    }
-
-    public int[] getPersenBP() {
-        return persenBP;
-    }
-
-    public void setPersenBP(int[] persenBP) {
-        this.persenBP = persenBP;
-    }
-
-    public int[] getPersenBO() {
-        return persenBO;
-    }
-
-    public void setPersenBO(int[] persenBO) {
-        this.persenBO = persenBO;
-    }
-
-    public int[] getPersenBS() {
-        return persenBS;
-    }
-
-    public void setPersenBS(int[] persenBS) {
-        this.persenBS = persenBS;
     }
 
     public int getuPenghasilan() {

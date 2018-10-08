@@ -367,7 +367,7 @@ public class halamanUsaha extends javax.swing.JFrame {
         getContentPane().add(penghasilanTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, 40));
 
         turnTxt.setText("0");
-        getContentPane().add(turnTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, -1, -1));
+        getContentPane().add(turnTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, -1, 30));
 
         operasional1.setText("jLabel5");
         getContentPane().add(operasional1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
@@ -469,94 +469,162 @@ public class halamanUsaha extends javax.swing.JFrame {
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         b_buatUsaha1.setText("buat");
+        b_buatUsaha1.setBorderPainted(false);
+        b_buatUsaha1.setContentAreaFilled(false);
         getContentPane().add(b_buatUsaha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 110, 30));
 
         b_buatUsaha2.setText("buat");
+        b_buatUsaha2.setBorderPainted(false);
+        b_buatUsaha2.setContentAreaFilled(false);
         getContentPane().add(b_buatUsaha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 295, 110, 40));
 
         b_buatUsaha3.setText("buat");
+        b_buatUsaha3.setBorderPainted(false);
+        b_buatUsaha3.setContentAreaFilled(false);
         getContentPane().add(b_buatUsaha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 590, 110, 40));
 
         b_buatUsaha4.setText("buat");
+        b_buatUsaha4.setContentAreaFilled(false);
+        b_buatUsaha4.setDefaultCapable(false);
         getContentPane().add(b_buatUsaha4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 595, 110, 30));
 
         b_nextTurn.setText("next turn");
+        b_nextTurn.setBorderPainted(false);
+        b_nextTurn.setContentAreaFilled(false);
         getContentPane().add(b_nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 6, 130, 130));
 
         b_usaha.setText("usaha");
+        b_usaha.setBorderPainted(false);
+        b_usaha.setContentAreaFilled(false);
+        b_usaha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_usahaActionPerformed(evt);
+            }
+        });
         getContentPane().add(b_usaha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 150, 130));
 
         b_bank.setText("bank");
+        b_bank.setBorderPainted(false);
+        b_bank.setContentAreaFilled(false);
         getContentPane().add(b_bank, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 235, 150, 130));
 
         b_dealer.setText("dealer");
+        b_dealer.setBorderPainted(false);
+        b_dealer.setContentAreaFilled(false);
         getContentPane().add(b_dealer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 395, 160, 130));
 
         b_property.setText("property");
+        b_property.setBorderPainted(false);
+        b_property.setContentAreaFilled(false);
         getContentPane().add(b_property, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 140, 130));
 
         aa.setText("aa");
+        aa.setBorderPainted(false);
+        aa.setContentAreaFilled(false);
+        aa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(aa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 308, 50, 50));
 
         ab.setText("ab");
+        ab.setBorderPainted(false);
+        ab.setContentAreaFilled(false);
         getContentPane().add(ab, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, 50));
 
         ac.setText("ac");
+        ac.setBorderPainted(false);
+        ac.setContentAreaFilled(false);
         getContentPane().add(ac, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 308, 50, 50));
 
         ad.setText("ad");
+        ad.setBorderPainted(false);
+        ad.setContentAreaFilled(false);
         getContentPane().add(ad, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 358, 50, 50));
 
         ae.setText("ae");
+        ae.setBorderPainted(false);
+        ae.setContentAreaFilled(false);
         getContentPane().add(ae, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 358, -1, 50));
 
         ba.setText("ba");
+        ba.setBorderPainted(false);
+        ba.setContentAreaFilled(false);
         getContentPane().add(ba, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 60, 50));
 
         bb.setText("bb");
+        bb.setBorderPainted(false);
+        bb.setContentAreaFilled(false);
         getContentPane().add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 50, 50));
 
         bc.setText("bc");
+        bc.setBorderPainted(false);
+        bc.setContentAreaFilled(false);
         getContentPane().add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, -1, 40));
 
         bd.setText("bd");
+        bd.setBorderPainted(false);
+        bd.setContentAreaFilled(false);
         getContentPane().add(bd, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 358, -1, 50));
 
         be.setText("be");
+        be.setBorderPainted(false);
+        be.setContentAreaFilled(false);
         getContentPane().add(be, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 358, -1, 50));
 
         ca.setText("ca");
+        ca.setBorderPainted(false);
+        ca.setContentAreaFilled(false);
         getContentPane().add(ca, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 610, -1, 38));
 
         cb.setText("cb");
+        cb.setBorderPainted(false);
+        cb.setContentAreaFilled(false);
         getContentPane().add(cb, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 660, -1, 38));
 
         cc.setText("cc");
+        cc.setBorderPainted(false);
+        cc.setContentAreaFilled(false);
         getContentPane().add(cc, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 610, -1, 38));
 
         cd.setText("cd");
+        cd.setBorderPainted(false);
+        cd.setContentAreaFilled(false);
         getContentPane().add(cd, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 660, -1, 38));
 
         ce.setText("ce");
+        ce.setBorderPainted(false);
+        ce.setContentAreaFilled(false);
         getContentPane().add(ce, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 660, -1, 38));
 
         da.setText("da");
+        da.setBorderPainted(false);
+        da.setContentAreaFilled(false);
         getContentPane().add(da, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 610, -1, 38));
 
         db.setText("db");
+        db.setBorderPainted(false);
+        db.setContentAreaFilled(false);
         getContentPane().add(db, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 660, -1, 38));
 
         dc.setText("dc");
+        dc.setBorderPainted(false);
+        dc.setContentAreaFilled(false);
         getContentPane().add(dc, new org.netbeans.lib.awtextra.AbsoluteConstraints(795, 608, 50, 40));
 
         dd.setText("dd");
+        dd.setBorderPainted(false);
+        dd.setContentAreaFilled(false);
         getContentPane().add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 660, 50, 38));
 
         de.setText("de");
+        de.setBorderPainted(false);
+        de.setContentAreaFilled(false);
         getContentPane().add(de, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 660, -1, 38));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void b_usahaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_usahaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_usahaActionPerformed
 
     /**
      * @param args the command line arguments

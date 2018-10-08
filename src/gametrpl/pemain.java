@@ -21,8 +21,7 @@ public class pemain {
         penghasilan = 0;
         usaha = new usaha[4];
         for (int i = 0; i < usaha.length; i++) {
-            int[] a={0,0};
-            usaha[i] = new usaha("",0,0,0,0,0,0,0,0,0,0,a,a,a);     
+            usaha[i] = new usaha("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
     }
     

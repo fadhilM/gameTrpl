@@ -43,18 +43,20 @@ public class mainMenu extends javax.swing.JFrame {
         b_caraMain = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1050, 750));
         setMinimumSize(new java.awt.Dimension(1050, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/3Main.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         b_bermain.setText("Bermain");
+        b_bermain.setBorderPainted(false);
+        b_bermain.setContentAreaFilled(false);
         getContentPane().add(b_bermain, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 250, 50));
 
         b_caraMain.setText("Cara Main");
+        b_caraMain.setBorderPainted(false);
+        b_caraMain.setContentAreaFilled(false);
         getContentPane().add(b_caraMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 250, 50));
 
         pack();

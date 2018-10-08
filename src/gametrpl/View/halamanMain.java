@@ -43,18 +43,19 @@ public class halamanMain extends javax.swing.JFrame {
         b_loadGame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1050, 750));
         setMinimumSize(new java.awt.Dimension(1050, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/3Main2.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel1.setFocusable(false);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 750));
 
         b_NewGame.setText("New Game");
         getContentPane().add(b_NewGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 260, 80));
 
         b_loadGame.setText("Load Game");
+        b_loadGame.setContentAreaFilled(false);
         getContentPane().add(b_loadGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 260, 80));
 
         pack();
