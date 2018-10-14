@@ -145,11 +145,6 @@ public class poperty extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        b_nextTurn = new javax.swing.JButton();
-        b_usaha = new javax.swing.JButton();
-        b_bank = new javax.swing.JButton();
-        b_dealer = new javax.swing.JButton();
-        b_property = new javax.swing.JButton();
         jmlh1 = new javax.swing.JLabel();
         jmlh2 = new javax.swing.JLabel();
         jmlh3 = new javax.swing.JLabel();
@@ -164,6 +159,11 @@ public class poperty extends javax.swing.JFrame {
         kendaraanTxt = new javax.swing.JLabel();
         propertyTxt = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        b_nextTurn = new javax.swing.JButton();
+        b_usaha = new javax.swing.JButton();
+        b_bank = new javax.swing.JButton();
+        b_dealer = new javax.swing.JButton();
+        b_property = new javax.swing.JButton();
         beliProperty1 = new javax.swing.JButton();
         beliProperty2 = new javax.swing.JButton();
         beliProperty3 = new javax.swing.JButton();
@@ -177,36 +177,6 @@ public class poperty extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1050, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        b_nextTurn.setText("next turn");
-        b_nextTurn.setBorderPainted(false);
-        b_nextTurn.setContentAreaFilled(false);
-        getContentPane().add(b_nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 43, 130, 130));
-
-        b_usaha.setText("usaha");
-        b_usaha.setBorderPainted(false);
-        b_usaha.setContentAreaFilled(false);
-        b_usaha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_usahaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(b_usaha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 127, 150, 130));
-
-        b_bank.setText("bank");
-        b_bank.setBorderPainted(false);
-        b_bank.setContentAreaFilled(false);
-        getContentPane().add(b_bank, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 272, 150, 130));
-
-        b_dealer.setText("dealer");
-        b_dealer.setBorderPainted(false);
-        b_dealer.setContentAreaFilled(false);
-        getContentPane().add(b_dealer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 432, 160, 130));
-
-        b_property.setText("property");
-        b_property.setBorderPainted(false);
-        b_property.setContentAreaFilled(false);
-        getContentPane().add(b_property, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 577, 140, 130));
 
         jmlh1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jmlh1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -269,6 +239,36 @@ public class poperty extends javax.swing.JFrame {
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setFocusable(false);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 750));
+
+        b_nextTurn.setText("next turn");
+        b_nextTurn.setBorderPainted(false);
+        b_nextTurn.setContentAreaFilled(false);
+        getContentPane().add(b_nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 43, 130, 130));
+
+        b_usaha.setText("usaha");
+        b_usaha.setBorderPainted(false);
+        b_usaha.setContentAreaFilled(false);
+        b_usaha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_usahaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(b_usaha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 150, 130));
+
+        b_bank.setText("bank");
+        b_bank.setBorderPainted(false);
+        b_bank.setContentAreaFilled(false);
+        getContentPane().add(b_bank, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 140, 130));
+
+        b_dealer.setText("dealer");
+        b_dealer.setBorderPainted(false);
+        b_dealer.setContentAreaFilled(false);
+        getContentPane().add(b_dealer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 140, 130));
+
+        b_property.setText("property");
+        b_property.setBorderPainted(false);
+        b_property.setContentAreaFilled(false);
+        getContentPane().add(b_property, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 140, 130));
 
         beliProperty1.setText("jButton1");
         beliProperty1.setBorderPainted(false);
