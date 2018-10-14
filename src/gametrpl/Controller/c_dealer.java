@@ -8,6 +8,7 @@ package gametrpl.Controller;
 import gametrpl.pemain;
 import gametrpl.kendaraan;
 import gametrpl.Controller.c_usaha;
+import gametrpl.Controller.c_property;
 import gametrpl.View.dealer;
 import gametrpl.usaha;
 
@@ -27,6 +28,7 @@ public class c_dealer extends controller {
     dealer dealer;
     kendaraan beli;
     c_usaha c_usaha;
+    c_property c_property;
 
     kendaraan[] daftarKendaraan;
 
@@ -57,6 +59,7 @@ public class c_dealer extends controller {
         dealer.getPropertyTxt().setText(String.valueOf(this.pemain.getJumlahProperty()));
 
         dealer.getB_usaha().addActionListener(new klikUsaha());
+        dealer.getB_property().addActionListener(new klikProperty());
 
         dealer.getBeliKendaraan1().addActionListener(new bK1());
         dealer.getBeliKendaraan2().addActionListener(new bK2());
@@ -174,6 +177,15 @@ public class c_dealer extends controller {
     
     public void updateTurn() {
         dealer.getTurnTxt().setText(String.valueOf(pemain.getTurn()));
+    }
+
+    private class klikProperty implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            c_property = new c_property(pemain);
+            dealer.dispose();
+        }
     }
 
     private class klikNextTurn implements ActionListener {

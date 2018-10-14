@@ -9,6 +9,7 @@ import gametrpl.View.halamanUsaha;
 import gametrpl.pemain;
 import gametrpl.usaha;
 import gametrpl.Controller.c_dealer;
+import gametrpl.Controller.c_property;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -139,6 +140,7 @@ public class c_usaha extends controller {
         halamanUsaha.getDe().addActionListener(new klikUpgradeD5());
 
         halamanUsaha.getB_dealer().addActionListener(new klikDealer());
+        halamanUsaha.getB_property().addActionListener(new klikProperty());
     }
 
     public void tambahTurn() {
@@ -307,6 +309,15 @@ public class c_usaha extends controller {
             popup("Selamat, Usaha Anda Berhasil Di Upgrade");
         } else {
             popup("Maaf Uang Yang Anda Miliki Tidak Cukup");
+        }
+    }
+
+    private class klikProperty implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            c_property c = new c_property(pemain);
+            halamanUsaha.dispose();
         }
     }
 

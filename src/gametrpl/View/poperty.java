@@ -6,6 +6,7 @@
 package gametrpl.View;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -22,6 +23,10 @@ public class poperty extends javax.swing.JFrame {
 
     public JButton getB_bank() {
         return b_bank;
+    }
+
+    public JButton getB_beli() {
+        return b_beli;
     }
 
     public JButton getB_dealer() {
@@ -71,6 +76,64 @@ public class poperty extends javax.swing.JFrame {
     public JButton getBeliProperty8() {
         return beliProperty8;
     }
+
+    public JLabel getDanaTxt() {
+        return danaTxt;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getJmlh1() {
+        return jmlh1;
+    }
+
+    public JLabel getJmlh2() {
+        return jmlh2;
+    }
+
+    public JLabel getJmlh3() {
+        return jmlh3;
+    }
+
+    public JLabel getJmlh4() {
+        return jmlh4;
+    }
+
+    public JLabel getJmlh5() {
+        return jmlh5;
+    }
+
+    public JLabel getJmlh6() {
+        return jmlh6;
+    }
+
+    public JLabel getJmlh7() {
+        return jmlh7;
+    }
+
+    public JLabel getJmlh8() {
+        return jmlh8;
+    }
+
+    public JLabel getKendaraanTxt() {
+        return kendaraanTxt;
+    }
+
+    public JLabel getPenghasilanTxt() {
+        return penghasilanTxt;
+    }
+
+    public JLabel getPropertyTxt() {
+        return propertyTxt;
+    }
+
+    public JLabel getTurnTxt() {
+        return turnTxt;
+    }
+
+    
     
     
     /**
@@ -87,6 +150,20 @@ public class poperty extends javax.swing.JFrame {
         b_bank = new javax.swing.JButton();
         b_dealer = new javax.swing.JButton();
         b_property = new javax.swing.JButton();
+        jmlh1 = new javax.swing.JLabel();
+        jmlh2 = new javax.swing.JLabel();
+        jmlh3 = new javax.swing.JLabel();
+        jmlh4 = new javax.swing.JLabel();
+        jmlh5 = new javax.swing.JLabel();
+        jmlh6 = new javax.swing.JLabel();
+        jmlh7 = new javax.swing.JLabel();
+        jmlh8 = new javax.swing.JLabel();
+        turnTxt = new javax.swing.JLabel();
+        danaTxt = new javax.swing.JLabel();
+        penghasilanTxt = new javax.swing.JLabel();
+        kendaraanTxt = new javax.swing.JLabel();
+        propertyTxt = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         beliProperty1 = new javax.swing.JButton();
         beliProperty2 = new javax.swing.JButton();
         beliProperty3 = new javax.swing.JButton();
@@ -95,13 +172,16 @@ public class poperty extends javax.swing.JFrame {
         beliProperty6 = new javax.swing.JButton();
         beliProperty7 = new javax.swing.JButton();
         beliProperty8 = new javax.swing.JButton();
+        b_beli = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1050, 750));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         b_nextTurn.setText("next turn");
         b_nextTurn.setBorderPainted(false);
         b_nextTurn.setContentAreaFilled(false);
+        getContentPane().add(b_nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 43, 130, 130));
 
         b_usaha.setText("usaha");
         b_usaha.setBorderPainted(false);
@@ -111,107 +191,129 @@ public class poperty extends javax.swing.JFrame {
                 b_usahaActionPerformed(evt);
             }
         });
+        getContentPane().add(b_usaha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 127, 150, 130));
 
         b_bank.setText("bank");
         b_bank.setBorderPainted(false);
         b_bank.setContentAreaFilled(false);
+        getContentPane().add(b_bank, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 272, 150, 130));
 
         b_dealer.setText("dealer");
         b_dealer.setBorderPainted(false);
         b_dealer.setContentAreaFilled(false);
+        getContentPane().add(b_dealer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 432, 160, 130));
 
         b_property.setText("property");
         b_property.setBorderPainted(false);
         b_property.setContentAreaFilled(false);
+        getContentPane().add(b_property, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 577, 140, 130));
+
+        jmlh1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jmlh1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jmlh1.setText("0");
+        getContentPane().add(jmlh1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 40, 80));
+
+        jmlh2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jmlh2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jmlh2.setText("0");
+        getContentPane().add(jmlh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 40, 80));
+
+        jmlh3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jmlh3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jmlh3.setText("0");
+        getContentPane().add(jmlh3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 40, 80));
+
+        jmlh4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jmlh4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jmlh4.setText("0");
+        getContentPane().add(jmlh4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, 50, 80));
+
+        jmlh5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jmlh5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jmlh5.setText("0");
+        getContentPane().add(jmlh5, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 160, 50, 80));
+
+        jmlh6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jmlh6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jmlh6.setText("0");
+        getContentPane().add(jmlh6, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 270, 50, 80));
+
+        jmlh7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jmlh7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jmlh7.setText("0");
+        getContentPane().add(jmlh7, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 390, 50, 80));
+
+        jmlh8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jmlh8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jmlh8.setText("0");
+        getContentPane().add(jmlh8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 510, 40, 80));
+
+        turnTxt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        turnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        turnTxt.setText("0");
+        getContentPane().add(turnTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, 110, 40));
+        getContentPane().add(danaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 16, 150, 30));
+        getContentPane().add(penghasilanTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 150, 20));
+
+        kendaraanTxt.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        kendaraanTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kendaraanTxt.setText("0");
+        getContentPane().add(kendaraanTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 20, 30, 30));
+
+        propertyTxt.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        propertyTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        propertyTxt.setText("0");
+        getContentPane().add(propertyTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 30, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/Halaman Properti.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel1.setFocusable(false);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 750));
 
         beliProperty1.setText("jButton1");
+        beliProperty1.setBorderPainted(false);
+        beliProperty1.setContentAreaFilled(false);
+        getContentPane().add(beliProperty1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 80, 80));
 
         beliProperty2.setText("jButton1");
+        beliProperty2.setBorderPainted(false);
+        beliProperty2.setContentAreaFilled(false);
+        getContentPane().add(beliProperty2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 80, 80));
 
         beliProperty3.setText("jButton1");
+        beliProperty3.setBorderPainted(false);
+        beliProperty3.setContentAreaFilled(false);
+        getContentPane().add(beliProperty3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 80, 80));
 
         beliProperty4.setText("jButton1");
+        beliProperty4.setBorderPainted(false);
+        beliProperty4.setContentAreaFilled(false);
+        getContentPane().add(beliProperty4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, 80, 80));
 
         beliProperty5.setText("jButton1");
+        beliProperty5.setBorderPainted(false);
+        beliProperty5.setContentAreaFilled(false);
+        getContentPane().add(beliProperty5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, -1, 90));
 
         beliProperty6.setText("jButton1");
+        beliProperty6.setBorderPainted(false);
+        beliProperty6.setContentAreaFilled(false);
+        getContentPane().add(beliProperty6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 80, 80));
 
         beliProperty7.setText("jButton1");
+        beliProperty7.setBorderPainted(false);
+        beliProperty7.setContentAreaFilled(false);
+        getContentPane().add(beliProperty7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 80, 80));
 
         beliProperty8.setText("jButton1");
+        beliProperty8.setBorderPainted(false);
+        beliProperty8.setContentAreaFilled(false);
+        getContentPane().add(beliProperty8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, 80, 80));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(beliProperty4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(beliProperty3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(beliProperty2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(beliProperty1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(207, 207, 207)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(beliProperty8, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(beliProperty7, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(beliProperty6, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(beliProperty5, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(341, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(b_bank, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(b_dealer, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(b_usaha, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(770, 770, 770)
-                                    .addComponent(b_nextTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(b_property, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(200, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(beliProperty5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(beliProperty6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(beliProperty7, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(beliProperty8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(beliProperty1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(beliProperty2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(beliProperty3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(beliProperty4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 56, 56))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(84, 84, 84)
-                            .addComponent(b_usaha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(b_nextTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(15, 15, 15)
-                    .addComponent(b_bank, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(30, 30, 30)
-                    .addComponent(b_dealer, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(15, 15, 15)
-                    .addComponent(b_property, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        b_beli.setText("jButton1");
+        b_beli.setBorderPainted(false);
+        b_beli.setContentAreaFilled(false);
+        getContentPane().add(b_beli, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 620, 220, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -260,6 +362,7 @@ public class poperty extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_bank;
+    private javax.swing.JButton b_beli;
     private javax.swing.JButton b_dealer;
     private javax.swing.JButton b_nextTurn;
     private javax.swing.JButton b_property;
@@ -272,5 +375,19 @@ public class poperty extends javax.swing.JFrame {
     private javax.swing.JButton beliProperty6;
     private javax.swing.JButton beliProperty7;
     private javax.swing.JButton beliProperty8;
+    private javax.swing.JLabel danaTxt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jmlh1;
+    private javax.swing.JLabel jmlh2;
+    private javax.swing.JLabel jmlh3;
+    private javax.swing.JLabel jmlh4;
+    private javax.swing.JLabel jmlh5;
+    private javax.swing.JLabel jmlh6;
+    private javax.swing.JLabel jmlh7;
+    private javax.swing.JLabel jmlh8;
+    private javax.swing.JLabel kendaraanTxt;
+    private javax.swing.JLabel penghasilanTxt;
+    private javax.swing.JLabel propertyTxt;
+    private javax.swing.JLabel turnTxt;
     // End of variables declaration//GEN-END:variables
 }
