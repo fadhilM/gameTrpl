@@ -28,6 +28,11 @@ public class halamanMain extends javax.swing.JFrame {
         return b_loadGame;
     }
 
+    public JButton getbKembali() {
+        return bKembali;
+    }
+    
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,6 +44,7 @@ public class halamanMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        bKembali = new javax.swing.JButton();
         b_NewGame = new javax.swing.JButton();
         b_loadGame = new javax.swing.JButton();
 
@@ -46,12 +52,19 @@ public class halamanMain extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1050, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/3Main2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/Main + back.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setFocusable(false);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 750));
 
+        bKembali.setText("kembali");
+        bKembali.setBorderPainted(false);
+        bKembali.setContentAreaFilled(false);
+        getContentPane().add(bKembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 630, 90, 90));
+
         b_NewGame.setText("New Game");
+        b_NewGame.setBorderPainted(false);
+        b_NewGame.setContentAreaFilled(false);
         getContentPane().add(b_NewGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 260, 80));
 
         b_loadGame.setText("Load Game");
@@ -97,6 +110,7 @@ public class halamanMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bKembali;
     private javax.swing.JButton b_NewGame;
     private javax.swing.JButton b_loadGame;
     private javax.swing.JLabel jLabel1;

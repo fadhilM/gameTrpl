@@ -277,6 +277,14 @@ public class halamanUsaha extends javax.swing.JFrame {
         return u11txt;
     }
 
+    public JLabel getKendaraanTxt() {
+        return kendaraanTxt;
+    }
+
+    public JLabel getPropertyTxt() {
+        return propertyTxt;
+    }
+
 
 
     
@@ -290,6 +298,10 @@ public class halamanUsaha extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         danaTxt = new javax.swing.JLabel();
         penghasilanTxt = new javax.swing.JLabel();
         turnTxt = new javax.swing.JLabel();
@@ -325,6 +337,8 @@ public class halamanUsaha extends javax.swing.JFrame {
         u43txt = new javax.swing.JLabel();
         u44txt = new javax.swing.JLabel();
         u45txt = new javax.swing.JLabel();
+        kendaraanTxt = new javax.swing.JLabel();
+        propertyTxt = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         b_buatUsaha1 = new javax.swing.JButton();
         b_buatUsaha2 = new javax.swing.JButton();
@@ -360,112 +374,72 @@ public class halamanUsaha extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1050, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setText("Percetakan");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, -1, 30));
+
+        jLabel4.setText("Minimarket");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 450, -1, 30));
+
+        jLabel3.setText("Kedai Kopi");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 150, -1, 30));
+
+        jLabel2.setText("Laundry");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
+
         danaTxt.setText("800");
-        getContentPane().add(danaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, 30));
+        getContentPane().add(danaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 20, 150, 30));
 
         penghasilanTxt.setText("40");
-        getContentPane().add(penghasilanTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, 40));
+        getContentPane().add(penghasilanTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 150, 30));
 
+        turnTxt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        turnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         turnTxt.setText("0");
-        getContentPane().add(turnTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, -1, 30));
-
-        operasional1.setText("jLabel5");
+        getContentPane().add(turnTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, 120, 50));
         getContentPane().add(operasional1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
-
-        penghasilan1.setText("jLabel4");
         getContentPane().add(penghasilan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, -1));
-
-        modal1.setText("jLabel5");
         getContentPane().add(modal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, -1, -1));
-
-        penghasilan2.setText("jLabel4");
         getContentPane().add(penghasilan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 200, -1, -1));
-
-        operasional2.setText("jLabel5");
         getContentPane().add(operasional2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 220, -1, -1));
-
-        modal2.setText("jLabel5");
         getContentPane().add(modal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 240, -1, -1));
-
-        penghasilan3.setText("jLabel4");
         getContentPane().add(penghasilan3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, -1, -1));
-
-        operasional3.setText("jLabel5");
         getContentPane().add(operasional3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 520, -1, -1));
-
-        modal3.setText("jLabel5");
         getContentPane().add(modal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 540, -1, -1));
-
-        penghasilan4.setText("jLabel4");
         getContentPane().add(penghasilan4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 500, -1, -1));
-
-        operasional4.setText("jLabel5");
         getContentPane().add(operasional4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 520, -1, -1));
-
-        modal4.setText("jLabel5");
         getContentPane().add(modal4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 540, -1, -1));
-
-        u11txt.setText("678768");
         getContentPane().add(u11txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
-
-        u12txt.setText("8908");
-        getContentPane().add(u12txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
-
-        u13txt.setText("1231231");
+        getContentPane().add(u12txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, -1, -1));
         getContentPane().add(u13txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, -1, -1));
-
-        u15txt.setText("12312312");
         getContentPane().add(u15txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, -1, -1));
-
-        u14txt.setText("2131321");
         getContentPane().add(u14txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, -1, 30));
-
-        u21txt.setText("3423");
         getContentPane().add(u21txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, -1, -1));
-
-        u22txt.setText("78678");
         getContentPane().add(u22txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 380, -1, -1));
-
-        u23txt.setText("6768");
         getContentPane().add(u23txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 320, -1, -1));
-
-        u24txt.setText("688687");
-        getContentPane().add(u24txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 380, -1, -1));
-
-        u25txt.setText("2323");
+        getContentPane().add(u24txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 380, -1, -1));
         getContentPane().add(u25txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 370, 30, 30));
-
-        u31txt.setText("234");
         getContentPane().add(u31txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, -1, -1));
-
-        u33txt.setText("23423");
         getContentPane().add(u33txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 620, -1, -1));
-
-        u32txt.setText("23432");
         getContentPane().add(u32txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 670, -1, -1));
-
-        u34txt.setText("23423");
         getContentPane().add(u34txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 670, -1, -1));
-
-        u35txt.setText("234234");
         getContentPane().add(u35txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 670, -1, -1));
-
-        u41txt.setText("1");
         getContentPane().add(u41txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 620, -1, 20));
-
-        u42txt.setText("1");
         getContentPane().add(u42txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 670, -1, -1));
-
-        u43txt.setText("1");
         getContentPane().add(u43txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 620, -1, -1));
-
-        u44txt.setText("1");
         getContentPane().add(u44txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 670, -1, -1));
-
-        u45txt.setText("1");
         getContentPane().add(u45txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 670, -1, -1));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/Halaman Main Main.png"))); // NOI18N
+        kendaraanTxt.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        kendaraanTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kendaraanTxt.setText("0");
+        getContentPane().add(kendaraanTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 30, 30));
+
+        propertyTxt.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        propertyTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        propertyTxt.setText("0");
+        getContentPane().add(propertyTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 30, 30));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/Halaman Main New.png"))); // NOI18N
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         b_buatUsaha1.setText("buat");
@@ -693,7 +667,12 @@ public class halamanUsaha extends javax.swing.JFrame {
     private javax.swing.JButton dc;
     private javax.swing.JButton dd;
     private javax.swing.JButton de;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel kendaraanTxt;
     private javax.swing.JLabel modal1;
     private javax.swing.JLabel modal2;
     private javax.swing.JLabel modal3;
@@ -707,6 +686,7 @@ public class halamanUsaha extends javax.swing.JFrame {
     private javax.swing.JLabel penghasilan3;
     private javax.swing.JLabel penghasilan4;
     private javax.swing.JLabel penghasilanTxt;
+    private javax.swing.JLabel propertyTxt;
     private javax.swing.JLabel turnTxt;
     private javax.swing.JLabel u11txt;
     private javax.swing.JLabel u12txt;

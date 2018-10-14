@@ -6,6 +6,7 @@
 package gametrpl.Controller;
 
 import gametrpl.View.halamanMain;
+import gametrpl.Controller.c_mainMenu;
 import gametrpl.Controller.c_newGame;
 import gametrpl.Controller.c_loadGame;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,7 @@ public class c_Main {
     halamanMain halamanMain;
     c_newGame c_newGame;
     c_loadGame c_loadGame;
+    c_mainMenu c_mainMenu;
 
     public c_Main() {
         halamanMain = new halamanMain();
@@ -27,6 +29,16 @@ public class c_Main {
         
         halamanMain.getB_NewGame().addActionListener(new klikNew());
         halamanMain.getB_loadGame().addActionListener(new klikLoad());
+        halamanMain.getbKembali().addActionListener(new klikKembali());
+    }
+    
+    private class klikKembali implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            c_mainMenu = new c_mainMenu();
+            halamanMain.dispose();
+        }
     }
 
     private class klikNew implements ActionListener {

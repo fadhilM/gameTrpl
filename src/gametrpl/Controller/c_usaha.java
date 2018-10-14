@@ -8,6 +8,7 @@ package gametrpl.Controller;
 import gametrpl.View.halamanUsaha;
 import gametrpl.pemain;
 import gametrpl.usaha;
+import gametrpl.Controller.c_dealer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -17,10 +18,11 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author ROG
  */
-public class c_usaha {
+public class c_usaha extends controller {
 
     pemain pemain;
     halamanUsaha halamanUsaha;
+    
 
     //usaha yang ada
     usaha laundry, kedaiKopi, percetakan, indomaret;
@@ -30,23 +32,56 @@ public class c_usaha {
 
     c_usaha(pemain pemain, boolean isNewGame) {
         this.pemain = pemain;
+        System.out.println(String.valueOf(this.pemain.getTurn()));
         this.pemain.setTurn(pemain.getTurn());
-        pemain.setDana(1000000);
-
         
-       
-        laundry = new usaha("laundry",9050 , 2000, 1100, 1000, 1000, 1000, 1000, 1000, 10, 10, 5, 5, 5, -8, 10);
-        kedaiKopi = new usaha("Kedai Kopi", 21500, 60000, 8000, 1000, 1000, 1000, 1000, 1000, 10, 10, 5, 5, 5, -8, 10);
-        percetakan = new usaha("Percetakan Digital", 200000, 60000, 40000, 1000, 1000, 1000, 1000, 1000, 10, 10, 5, 5, 5, -6, 10);
-        indomaret = new usaha("Waralaba Minimarket", 200000, 60000, 40000, 1000, 1000, 1000, 1000, 1000, 10, 10, 5, 5, 5, -6, 10);
+        laundry = new usaha("laundry", 9050, 2000, 1100, 5000, 5000, 5000, 5000, 5000, 10, 10, 5, 5, 5, -9, 10);
+        kedaiKopi = new usaha("Kedai Kopi", 21500, 60000, 8000, 10000, 10000, 10000, 10000, 10000, 10, 10, 5, 5, 5, -9, 10);
+        percetakan = new usaha("Percetakan Digital", 200000, 60000, 40000, 13000, 13000, 13000, 13000, 13000, 10, 10, 5, 5, 5, -9, 10);
+        indomaret = new usaha("Waralaba Minimarket", 394000, 180000, 166000, 20000, 20000, 20000, 20000, 20000, 10, 10, 5, 5, 5, -9, 10);
 
         halamanUsaha = new halamanUsaha();
         halamanUsaha.setVisible(true);
+        
+        if (!isNewGame) {
+            if (pemain.getLaundry().getNamaUsaha().equals(laundry.getNamaUsaha())) {
+                halamanUsaha.getU11txt().setText(String.valueOf(this.pemain.getLaundry().getuPenghasilan()));
+                halamanUsaha.getU12txt().setText(String.valueOf(this.pemain.getLaundry().getuOperasional()));
+                halamanUsaha.getU13txt().setText(String.valueOf(this.pemain.getLaundry().getbPenghasilan()));
+                halamanUsaha.getU14txt().setText(String.valueOf(this.pemain.getLaundry().getbOperasional()));
+                halamanUsaha.getU15txt().setText(String.valueOf(this.pemain.getLaundry().getbSpesial()));
+            }
+            if (pemain.getKedaiKopi().getNamaUsaha().equals(kedaiKopi.getNamaUsaha())) {
+                halamanUsaha.getU21txt().setText(String.valueOf(this.pemain.getKedaiKopi().getuPenghasilan()));
+                halamanUsaha.getU22txt().setText(String.valueOf(this.pemain.getKedaiKopi().getuOperasional()));
+                halamanUsaha.getU23txt().setText(String.valueOf(this.pemain.getKedaiKopi().getbPenghasilan()));
+                halamanUsaha.getU24txt().setText(String.valueOf(this.pemain.getKedaiKopi().getbOperasional()));
+                halamanUsaha.getU25txt().setText(String.valueOf(this.pemain.getKedaiKopi().getbSpesial()));
+            }
+            if (pemain.getPercetakan().getNamaUsaha().equals(percetakan.getNamaUsaha())) {
+                halamanUsaha.getU31txt().setText(String.valueOf(this.pemain.getPercetakan().getuPenghasilan()));
+                halamanUsaha.getU32txt().setText(String.valueOf(this.pemain.getPercetakan().getuOperasional()));
+                halamanUsaha.getU33txt().setText(String.valueOf(this.pemain.getPercetakan().getbPenghasilan()));
+                halamanUsaha.getU34txt().setText(String.valueOf(this.pemain.getPercetakan().getbOperasional()));
+                halamanUsaha.getU35txt().setText(String.valueOf(this.pemain.getPercetakan().getbSpesial()));
+            }
+            if (pemain.getIndomaret().getNamaUsaha().equals(percetakan.getNamaUsaha())) {
+                halamanUsaha.getU41txt().setText(String.valueOf(this.pemain.getIndomaret().getuPenghasilan()));
+                halamanUsaha.getU42txt().setText(String.valueOf(this.pemain.getIndomaret().getuOperasional()));
+                halamanUsaha.getU43txt().setText(String.valueOf(this.pemain.getIndomaret().getbPenghasilan()));
+                halamanUsaha.getU44txt().setText(String.valueOf(this.pemain.getIndomaret().getbOperasional()));
+                halamanUsaha.getU45txt().setText(String.valueOf(this.pemain.getIndomaret().getbSpesial()));
+            }
+        }
+
 
         updateDana();
         updatePenghasilan();
-        tambahTurn();
         updateTurn();
+        
+        //label property dan kendaraan
+        halamanUsaha.getKendaraanTxt().setText(String.valueOf(this.pemain.getJumlahKendaraan()));
+        halamanUsaha.getPropertyTxt().setText(String.valueOf(this.pemain.getJumlahProperty()));
 
         //label modal
         halamanUsaha.getModal1().setText(String.valueOf(laundry.getModal()));
@@ -55,16 +90,16 @@ public class c_usaha {
         halamanUsaha.getModal4().setText(String.valueOf(indomaret.getModal()));
 
         //label penghasilan
-        halamanUsaha.getPenghasilan1().setText(String.valueOf(laundry.getPenghasilan()));
-        halamanUsaha.getPenghasilan2().setText(String.valueOf(kedaiKopi.getPenghasilan()));
-        halamanUsaha.getPenghasilan3().setText(String.valueOf(percetakan.getPenghasilan()));
-        halamanUsaha.getPenghasilan4().setText(String.valueOf(indomaret.getPenghasilan()));
+        halamanUsaha.getPenghasilan1().setText(String.valueOf(this.pemain.getLaundry().getPenghasilan()));
+        halamanUsaha.getPenghasilan2().setText(String.valueOf(this.pemain.getKedaiKopi().getPenghasilan()));
+        halamanUsaha.getPenghasilan3().setText(String.valueOf(this.pemain.getPercetakan().getPenghasilan()));
+        halamanUsaha.getPenghasilan4().setText(String.valueOf(this.pemain.getIndomaret().getPenghasilan()));
 
         //label Operasional
-        halamanUsaha.getOperasional1().setText(String.valueOf(laundry.getOperasional()));
-        halamanUsaha.getOperasional2().setText(String.valueOf(kedaiKopi.getOperasional()));
-        halamanUsaha.getOperasional3().setText(String.valueOf(percetakan.getOperasional()));
-        halamanUsaha.getOperasional4().setText(String.valueOf(indomaret.getOperasional()));
+        halamanUsaha.getOperasional1().setText(String.valueOf(this.pemain.getLaundry().getOperasional()));
+        halamanUsaha.getOperasional2().setText(String.valueOf(this.pemain.getKedaiKopi().getOperasional()));
+        halamanUsaha.getOperasional3().setText(String.valueOf(this.pemain.getPercetakan().getOperasional()));
+        halamanUsaha.getOperasional4().setText(String.valueOf(this.pemain.getIndomaret().getOperasional()));
 
         //event listener buat usaha
         halamanUsaha.getB_nextTurn().addActionListener(new klikNextTurn());
@@ -102,6 +137,8 @@ public class c_usaha {
         halamanUsaha.getBe().addActionListener(new klikUpgradeB5());
         halamanUsaha.getCe().addActionListener(new klikUpgradeC5());
         halamanUsaha.getDe().addActionListener(new klikUpgradeD5());
+
+        halamanUsaha.getB_dealer().addActionListener(new klikDealer());
     }
 
     public void tambahTurn() {
@@ -110,7 +147,6 @@ public class c_usaha {
 
     public void updateTurn() {
         halamanUsaha.getTurnTxt().setText(String.valueOf(this.pemain.getTurn()));
-
     }
 
     public void updateDana() {
@@ -121,76 +157,8 @@ public class c_usaha {
         halamanUsaha.getPenghasilanTxt().setText(String.valueOf(pemain.getPenghasilan()));
     }
 
-    private int randomPersen(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
-
-    public int hitungPenghasilan() {
-        int penghasilan, penghasilanSeluruh = 0, penghasilanKotor, penghasilanBersih, operasional, persen = 0;
-        usaha[] usahaPemain = pemain.getUsaha();
-        for (int i = 0; i < usahaPemain.length; i++) {
-            //generate angka random berdasarkan min max usaha
-            if (usahaPemain[i].isBoostP()) {
-                persen = randomPersen(usahaPemain[i].getMin() - usahaPemain[i].getPersenUp(), usahaPemain[i].getMax() + 1);
-                
-                usahaPemain[i].setTempP(usahaPemain[i].getTempP() - 1);
-                if (usahaPemain[i].getTempP() == 0) {
-                    usahaPemain[i].setBoostP(false);
-                    usahaPemain[i].setTempP(usahaPemain[i].getP());
-                   
-                }
-            } else {
-                persen = ThreadLocalRandom.current().nextInt(usahaPemain[i].getMin(), usahaPemain[i].getMax() + 1);
-            }
-            System.out.println("Persen :"+String.valueOf(persen));
-
-            penghasilan = usahaPemain[i].getPenghasilan();
-            int minPlusPenghasilan = persen * penghasilan / 100;
-            penghasilanKotor = penghasilan - minPlusPenghasilan;
-            
-            System.out.println("penghasilan :" + String.valueOf(penghasilanKotor));
-            usahaPemain[i].setPenghasilan(penghasilanKotor);
-
-            operasional = usahaPemain[i].getOperasional();
-            if (usahaPemain[i].isBoostO()) {
-                int persenB = ThreadLocalRandom.current().nextInt(-5, -15 - 1);
-                System.out.println(String.valueOf(persenB));
-                operasional = operasional - (operasional * persenB / 100);
-                usahaPemain[i].setTempO(usahaPemain[i].getTempO() - 1);
-                if (usahaPemain[i].getTempO() == 0) {
-                    usahaPemain[i].setBoostO(false);
-                    usahaPemain[i].setTempO(usahaPemain[i].getO());
-                }
-            }
-
-            if (usahaPemain[i].isBoostS()) {
-                int persenP = randomPersen(usahaPemain[i].getMin() - 5, usahaPemain[i].getMax() + 1);
-                int persenO = ThreadLocalRandom.current().nextInt(-5, -15 - 1);
-                int penghasilanB = penghasilan * persenP / 100;
-                penghasilanKotor = penghasilanKotor + penghasilanB;
-                operasional = operasional - (operasional * persenO / 100);
-                usahaPemain[i].setTempS(usahaPemain[i].getTempS() - 1);
-                if (usahaPemain[i].getTempS() > 1) {
-                    usahaPemain[i].setBoostS(false);
-                    usahaPemain[i].setTempS(usahaPemain[i].getS());
-                } 
-            }
-
-            
-            penghasilanBersih = penghasilanKotor - operasional;
-            penghasilanSeluruh += penghasilanBersih;
-
-        }
-        pemain.setUsaha(usahaPemain);
-        return penghasilanSeluruh;
-    }
-    
     public void popup(String popup) {
         JOptionPane.showMessageDialog(halamanUsaha, popup);
-    }
-
-    public boolean uangCukup(int danaPemain, int harga) {
-        return danaPemain >= harga;
     }
 
     public boolean udahPunya(usaha usaha, int index) {
@@ -203,7 +171,7 @@ public class c_usaha {
         for (int i = 0; i < uPemain.length; i++) {
             if (uPemain[i].getNamaUsaha().equalsIgnoreCase(usaha.getNamaUsaha())) {
                 //System.out.print(String.valueOf(uPemain[i].getPenghasilan()) + ",");
-                upgradePenghasilan = uPemain[i].getPenghasilan() + (uPemain[i].getPenghasilan() * uPemain[i].getPersenUp()/ 100);
+                upgradePenghasilan = uPemain[i].getPenghasilan() + (uPemain[i].getPenghasilan() * uPemain[i].getPersenUp() / 100);
                 uPemain[i].setPenghasilan(upgradePenghasilan);
                 pemain.setUsaha(uPemain);
                 //System.out.println(String.valueOf(uPemain[i].getPenghasilan()));
@@ -216,7 +184,7 @@ public class c_usaha {
     public void upgradeOperasional(int i) {
         int upgradeOperasional = 0;
         usaha[] uPemain = pemain.getUsaha();
-        upgradeOperasional = uPemain[i].getOperasional() - (uPemain[i].getOperasional() * uPemain[i].getPersenO()/ 100);
+        upgradeOperasional = uPemain[i].getOperasional() - (uPemain[i].getOperasional() * uPemain[i].getPersenO() / 100);
         uPemain[i].setOperasional(upgradeOperasional);
         pemain.setUsaha(uPemain);
         updateDana();
@@ -268,6 +236,69 @@ public class c_usaha {
         }
     }
 
+    private int randomPersen(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
+
+    public int hitungPenghasilan() {
+        int penghasilan, penghasilanSeluruh = 0, penghasilanKotor, penghasilanBersih, operasional, persen = 0;
+        usaha[] usahaPemain = pemain.getUsaha();
+        for (int i = 0; i < usahaPemain.length; i++) {
+            //generate angka random berdasarkan min max usaha
+            if (usahaPemain[i].isBoostP()) {
+                persen = randomPersen(usahaPemain[i].getMin() - usahaPemain[i].getPersenUp(), usahaPemain[i].getMax() + 1);
+
+                usahaPemain[i].setTempP(usahaPemain[i].getTempP() - 1);
+                if (usahaPemain[i].getTempP() == 0) {
+                    usahaPemain[i].setBoostP(false);
+                    usahaPemain[i].setTempP(usahaPemain[i].getP());
+
+                }
+            } else {
+                persen = ThreadLocalRandom.current().nextInt(usahaPemain[i].getMin(), usahaPemain[i].getMax() + 1);
+            }
+            System.out.println("Persen :" + String.valueOf(persen));
+
+            penghasilan = usahaPemain[i].getPenghasilan();
+            int minPlusPenghasilan = persen * penghasilan / 100;
+            penghasilanKotor = penghasilan - minPlusPenghasilan;
+
+            System.out.println("penghasilan :" + String.valueOf(penghasilanKotor));
+            usahaPemain[i].setPenghasilan(penghasilanKotor);
+
+            operasional = usahaPemain[i].getOperasional();
+            if (usahaPemain[i].isBoostO()) {
+                int persenB = ThreadLocalRandom.current().nextInt(-15, -5 - 1);
+                System.out.println(String.valueOf(persenB));
+                operasional = operasional - (operasional * persenB / 100);
+                usahaPemain[i].setTempO(usahaPemain[i].getTempO() - 1);
+                if (usahaPemain[i].getTempO() == 0) {
+                    usahaPemain[i].setBoostO(false);
+                    usahaPemain[i].setTempO(usahaPemain[i].getO());
+                }
+            }
+
+            if (usahaPemain[i].isBoostS()) {
+                int persenP = randomPersen(usahaPemain[i].getMin() - 5, usahaPemain[i].getMax() + 1);
+                int persenO = ThreadLocalRandom.current().nextInt(-5, -15 - 1);
+                int penghasilanB = penghasilan * persenP / 100;
+                penghasilanKotor = penghasilanKotor + penghasilanB;
+                operasional = operasional - (operasional * persenO / 100);
+                usahaPemain[i].setTempS(usahaPemain[i].getTempS() - 1);
+                if (usahaPemain[i].getTempS() > 1) {
+                    usahaPemain[i].setBoostS(false);
+                    usahaPemain[i].setTempS(usahaPemain[i].getS());
+                }
+            }
+
+            penghasilanBersih = penghasilanKotor - operasional;
+            penghasilanSeluruh += penghasilanBersih;
+
+        }
+        pemain.setUsaha(usahaPemain);
+        return penghasilanSeluruh;
+    }
+
     public void boostSpecial(int index) {
         if (uangCukup(pemain.getDana(), pemain.getUsaha()[index].getbSpesial())) {
             pemain.setDana(pemain.getDana() - pemain.getUsaha()[index].getbSpesial());
@@ -276,6 +307,15 @@ public class c_usaha {
             popup("Selamat, Usaha Anda Berhasil Di Upgrade");
         } else {
             popup("Maaf Uang Yang Anda Miliki Tidak Cukup");
+        }
+    }
+
+    private class klikDealer implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            c_dealer c = new c_dealer(pemain);
+            halamanUsaha.dispose();
         }
     }
 
@@ -538,6 +578,8 @@ public class c_usaha {
                 popup("Selamat Usaha Berhasil Dibuat");
                 updateDana();
                 //label upgrade usaha 1
+                halamanUsaha.getPenghasilan1().setText(String.valueOf(pemain.getLaundry().getPenghasilan()));
+                halamanUsaha.getOperasional1().setText(String.valueOf(pemain.getLaundry().getOperasional()));
                 halamanUsaha.getU11txt().setText(String.valueOf(pemain.getLaundry().getuPenghasilan()));
                 halamanUsaha.getU12txt().setText(String.valueOf(pemain.getLaundry().getuOperasional()));
                 halamanUsaha.getU13txt().setText(String.valueOf(pemain.getLaundry().getbPenghasilan()));
@@ -559,6 +601,9 @@ public class c_usaha {
                 popup("Selamat Usaha Berhasil Dibuat");
                 updateDana();
                 //label upgrade usaha 2
+                halamanUsaha.getPenghasilan2().setText(String.valueOf(pemain.getKedaiKopi().getPenghasilan()));
+                halamanUsaha.getOperasional2().setText(String.valueOf(pemain.getKedaiKopi().getOperasional()));
+                halamanUsaha.getPenghasilan2().setText(String.valueOf(pemain.getKedaiKopi().getPenghasilan()));
                 halamanUsaha.getU21txt().setText(String.valueOf(pemain.getKedaiKopi().getuPenghasilan()));
                 halamanUsaha.getU22txt().setText(String.valueOf(pemain.getKedaiKopi().getuOperasional()));
                 halamanUsaha.getU23txt().setText(String.valueOf(pemain.getKedaiKopi().getbPenghasilan()));
@@ -580,6 +625,8 @@ public class c_usaha {
                 popup("Selamat Usaha Berhasil Dibuat");
                 updateDana();
                 //label upgrade usaha 3
+                halamanUsaha.getPenghasilan3().setText(String.valueOf(pemain.getPercetakan().getPenghasilan()));
+                halamanUsaha.getOperasional3().setText(String.valueOf(pemain.getPercetakan().getOperasional()));
                 halamanUsaha.getU31txt().setText(String.valueOf(pemain.getPercetakan().getuPenghasilan()));
                 halamanUsaha.getU32txt().setText(String.valueOf(pemain.getPercetakan().getuOperasional()));
                 halamanUsaha.getU33txt().setText(String.valueOf(pemain.getPercetakan().getbPenghasilan()));
@@ -601,6 +648,8 @@ public class c_usaha {
                 popup("Selamat Usaha Berhasil Dibuat");
                 updateDana();
                 //label upgrade usaha 4
+                halamanUsaha.getPenghasilan4().setText(String.valueOf(pemain.getIndomaret().getPenghasilan()));
+                halamanUsaha.getOperasional4().setText(String.valueOf(pemain.getIndomaret().getOperasional()));
                 halamanUsaha.getU41txt().setText(String.valueOf(pemain.getIndomaret().getuPenghasilan()));
                 halamanUsaha.getU42txt().setText(String.valueOf(pemain.getIndomaret().getuOperasional()));
                 halamanUsaha.getU43txt().setText(String.valueOf(pemain.getIndomaret().getbPenghasilan()));
@@ -610,6 +659,17 @@ public class c_usaha {
                 popup("Maaf, Dana yang anda miliki tidak mencukupi untuk membuat usaha ini");
             }
         }
+    }
+
+    private void perbaruiStatus() {
+        halamanUsaha.getPenghasilan1().setText(String.valueOf(pemain.getLaundry().getPenghasilan()));
+        halamanUsaha.getOperasional1().setText(String.valueOf(pemain.getLaundry().getOperasional()));
+        halamanUsaha.getPenghasilan2().setText(String.valueOf(pemain.getKedaiKopi().getPenghasilan()));
+        halamanUsaha.getOperasional2().setText(String.valueOf(pemain.getKedaiKopi().getOperasional()));
+        halamanUsaha.getPenghasilan3().setText(String.valueOf(pemain.getPercetakan().getPenghasilan()));
+        halamanUsaha.getOperasional3().setText(String.valueOf(pemain.getPercetakan().getOperasional()));
+        halamanUsaha.getPenghasilan4().setText(String.valueOf(pemain.getIndomaret().getPenghasilan()));
+        halamanUsaha.getOperasional4().setText(String.valueOf(pemain.getIndomaret().getOperasional()));
     }
 
     private class klikNextTurn implements ActionListener {
@@ -622,6 +682,7 @@ public class c_usaha {
             updatePenghasilan();
             tambahTurn();
             updateTurn();
+            perbaruiStatus();
         }
     }
 

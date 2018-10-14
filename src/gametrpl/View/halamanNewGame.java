@@ -29,6 +29,12 @@ public class halamanNewGame extends javax.swing.JFrame {
         return txt_nama;
     }
 
+    public JButton getbKembali() {
+        return bKembali;
+    }
+    
+    
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,6 +47,7 @@ public class halamanNewGame extends javax.swing.JFrame {
 
         txt_nama = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        bKembali = new javax.swing.JButton();
         b_mulai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,11 +55,17 @@ public class halamanNewGame extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 304, 45));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/3Klik New Game.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/Klik New Game + back.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        bKembali.setText("kembali");
+        bKembali.setBorderPainted(false);
+        bKembali.setContentAreaFilled(false);
+        getContentPane().add(bKembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 635, 100, 90));
+
         b_mulai.setText("Mulai");
+        b_mulai.setBorderPainted(false);
+        b_mulai.setContentAreaFilled(false);
         getContentPane().add(b_mulai, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 300, 80));
 
         pack();
@@ -94,6 +107,7 @@ public class halamanNewGame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bKembali;
     private javax.swing.JButton b_mulai;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txt_nama;

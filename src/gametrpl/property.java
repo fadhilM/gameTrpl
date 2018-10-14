@@ -9,21 +9,13 @@ package gametrpl;
  *
  * @author ROG
  */
-public class kendaraan {
-    int harga;
+public class property {
     String nama;
-    int turn=0;
+    int harga;
+    int turn;
 
-    public kendaraan(String nama, int harga) {
-        this.harga = harga;
+    public property(String nama, int harga) {
         this.nama = nama;
-    }
-
-    public int getHarga() {
-        return harga;
-    }
-
-    public void setHarga(int harga) {
         this.harga = harga;
     }
 
@@ -35,12 +27,23 @@ public class kendaraan {
         this.nama = nama;
     }
 
+    public int getHarga() {
+        return harga;
+    }
+
+    public void setHarga(int harga) {
+        this.harga = harga;
+    }
+
     public int getTurn() {
         return turn;
     }
 
     public void setTurn(int turn) {
         this.turn = turn;
-    }   
+    }
+    
+    
+    
     
 }

@@ -5,6 +5,9 @@
  */
 package gametrpl;
 import gametrpl.usaha;
+import gametrpl.property;
+import gametrpl.kendaraan;
+import java.util.ArrayList;
 /**
  *
  * @author ROG
@@ -13,16 +16,22 @@ public class pemain {
     String pemain;
     int dana,penghasilan,turn;
     usaha[] usaha;
+    ArrayList<kendaraan> kendaraan;
+    ArrayList<property> property;
+    
+    
 
     public pemain(String pemain,int turn) {
         this.turn = turn;
         this.pemain = pemain;
-        dana = 5000;
+        dana = 10000;
         penghasilan = 0;
         usaha = new usaha[4];
         for (int i = 0; i < usaha.length; i++) {
             usaha[i] = new usaha("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
+        kendaraan = new ArrayList<kendaraan>();
+        property = new ArrayList<property>();
     }
     
     public pemain(pemain pemain, int turn){
@@ -106,6 +115,59 @@ public class pemain {
 
     public void setTurn(int turn) {
         this.turn = turn;
+    }
+
+    public ArrayList<kendaraan> getKendaraan() {
+        return kendaraan;
+    }
+
+    public void setKendaraan(ArrayList<kendaraan> kendaraan) {
+        this.kendaraan = kendaraan;
+    }
+    
+    
+    public void tambahKendaraan(kendaraan kendaraan){
+        this.kendaraan.add(kendaraan);
+    }
+    
+    public int cariKendaraan(String nama){
+        int jumlah=0;
+        for (int i = 0; i < kendaraan.size(); i++) {
+            if (kendaraan.get(i).getNama().equalsIgnoreCase(nama)) {
+                jumlah+=1;
+            }
+        }
+        return jumlah;
+    }
+
+    public ArrayList<property> getProperty() {
+        return property;
+    }
+
+    public void setProperty(ArrayList<property> property) {
+        this.property = property;
+    }
+    
+    public void tambahProperty(property property){
+        this.property.add(property);
+    }
+    
+    public int getJumlahKendaraan(){
+       return kendaraan.size();
+    }
+    
+    public int getJumlahProperty(){
+       return property.size();
+    }
+    
+    public int cariProperty(String nama){
+        int jumlah=0;
+        for (int i = 0; i < property.size(); i++) {
+            if (property.get(i).getNama().equalsIgnoreCase(nama)) {
+                jumlah+=1;
+            }
+        }
+        return jumlah;
     }
     
     
