@@ -11,6 +11,7 @@ package gametrpl;
  */
 public class kendaraan {
     int harga;
+    boolean tipe;
     String nama;
     int turn=0;
 
@@ -42,5 +43,13 @@ public class kendaraan {
     public void setTurn(int turn) {
         this.turn = turn;
     }   
+
+    public boolean isTipe() {
+        return tipe;
+    }
+
+    public void setTipe(boolean tipe) {
+        this.tipe = tipe;
+    }
     
 }

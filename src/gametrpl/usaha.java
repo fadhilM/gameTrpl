@@ -19,9 +19,9 @@ public class usaha {
     int persenUp,persenO;
     int tempP,tempO,tempS;
     int p,o,s;
-    int min,max;
+    int[][] minMax;
 
-    public usaha(String namaUsaha, int modal, int penghasilan, int operasional, int uPenghasilan, int uOperasional, int bPenghasilan, int bOperasional, int bSpesial, int persenUp, int persenO, int p, int o, int s, int min, int max) {
+    public usaha(String namaUsaha, int modal, int penghasilan, int operasional, int uPenghasilan, int uOperasional, int bPenghasilan, int bOperasional, int bSpesial, int persenUp, int persenO, int p, int o, int s, int[][] minMax) {
         this.namaUsaha = namaUsaha;
         this.modal = modal;
         this.penghasilan = penghasilan;
@@ -39,8 +39,15 @@ public class usaha {
         tempO = o;
         this.s = s;
         tempS = s;
-        this.min = min;
-        this.max = max;
+        this.minMax = minMax;
+    }
+
+    public int[][] getMinMax() {
+        return minMax;
+    }
+
+    public void setMinMax(int[][] minMax) {
+        this.minMax = minMax;
     }
 
     public int getPersenUp() {
@@ -82,22 +89,6 @@ public class usaha {
     public void setS(int s) {
         this.s = s;
     }    
-    
-    public int getMin() {
-        return min;
-    }
-
-    public void setMin(int min) {
-        this.min = min;
-    }
-
-    public int getMax() {
-        return max;
-    }
-
-    public void setMax(int max) {
-        this.max = max;
-    }
 
     public int getTempP() {
         return tempP;

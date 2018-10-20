@@ -12,6 +12,7 @@ import gametrpl.Controller.c_dealer;
 import gametrpl.Controller.c_property;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -23,7 +24,6 @@ public class c_usaha extends controller {
 
     pemain pemain;
     halamanUsaha halamanUsaha;
-    
 
     //usaha yang ada
     usaha laundry, kedaiKopi, percetakan, indomaret;
@@ -35,15 +35,76 @@ public class c_usaha extends controller {
         this.pemain = pemain;
         System.out.println(String.valueOf(this.pemain.getTurn()));
         this.pemain.setTurn(pemain.getTurn());
+
+        //trend laundry
+        int[][] minMax1 = {
+            {-20, 5},
+            {-7, 15},
+            {-10, 10},
+            {-10, 10},
+            {-10, 10},
+            {-7, 15},
+            {-20, 5},
+            {-10, 10},
+            {-10, 10},
+            {-10, 10},
+            {-10, 10},
+            {-10, 10}};
         
-        laundry = new usaha("laundry", 9050, 2000, 1100, 5000, 5000, 5000, 5000, 5000, 10, 10, 5, 5, 5, -9, 10);
-        kedaiKopi = new usaha("Kedai Kopi", 21500, 60000, 8000, 10000, 10000, 10000, 10000, 10000, 10, 10, 5, 5, 5, -9, 10);
-        percetakan = new usaha("Percetakan Digital", 200000, 60000, 40000, 13000, 13000, 13000, 13000, 13000, 10, 10, 5, 5, 5, -9, 10);
-        indomaret = new usaha("Waralaba Minimarket", 394000, 180000, 166000, 20000, 20000, 20000, 20000, 20000, 10, 10, 5, 5, 5, -9, 10);
+        
+        //trend kedai kopi
+        int[][] minMax2 = {
+            {-20, 5},
+            {-10, 10},
+            {-10, 10},
+            {-7, 15},
+            {-10, 10},
+            {-20, 5},
+            {-10, 10},
+            {-10, 10},
+            {-10, 10},
+            {-7, 15},
+            {-10, 10},
+            {-10, 10}};
+        
+        //trend fotokopi
+        int[][] minMax3 = {
+            {-7, 15},
+            {-7, 15},
+            {-10, 10},
+            {-10, 10},
+            {-20, 5},
+            {-10, 10},
+            {-20, 5},
+            {-10, 10},
+            {-10, 10},
+            {-10, 10},
+            {-10, 10},
+            {-20, 10}};
+        
+        //trend indomaret
+        int[][] minMax4 = {
+            {-20, 5},
+            {-15, 7},
+            {-10, 10},
+            {-7, 15},
+            {-10, 10},
+            {-20, 5},
+            {-10, 10},
+            {-15, 7},
+            {-10, 10},
+            {-7, 15},
+            {-10, 10},
+            {-20, 5}};
+
+        laundry = new usaha("laundry", 9050, 2000, 1100, 5000, 5000, 5000, 5000, 5000, 10, 10, 5, 5, 5, minMax1);
+        kedaiKopi = new usaha("Kedai Kopi", 21500, 60000, 8000, 10000, 10000, 10000, 10000, 10000, 10, 10, 5, 5, 5, minMax2);
+        percetakan = new usaha("fotokopi", 200000, 60000, 40000, 13000, 13000, 13000, 13000, 13000, 10, 10, 5, 5, 5, minMax3);
+        indomaret = new usaha("Waralaba Minimarket", 394000, 180000, 166000, 20000, 20000, 20000, 20000, 20000, 10, 10, 5, 5, 5, minMax4);
 
         halamanUsaha = new halamanUsaha();
         halamanUsaha.setVisible(true);
-        
+
         if (!isNewGame) {
             if (pemain.getLaundry().getNamaUsaha().equals(laundry.getNamaUsaha())) {
                 halamanUsaha.getU11txt().setText(String.valueOf(this.pemain.getLaundry().getuPenghasilan()));
@@ -75,11 +136,10 @@ public class c_usaha extends controller {
             }
         }
 
-
         updateDana();
         updatePenghasilan();
         updateTurn();
-        
+
         //label property dan kendaraan
         halamanUsaha.getKendaraanTxt().setText(String.valueOf(this.pemain.getJumlahKendaraan()));
         halamanUsaha.getPropertyTxt().setText(String.valueOf(this.pemain.getJumlahProperty()));
@@ -246,9 +306,9 @@ public class c_usaha extends controller {
         int penghasilan, penghasilanSeluruh = 0, penghasilanKotor, penghasilanBersih, operasional, persen = 0;
         usaha[] usahaPemain = pemain.getUsaha();
         for (int i = 0; i < usahaPemain.length; i++) {
-            //generate angka random berdasarkan min max usaha
+            //generate angka random berdasarkan trend usaha
             if (usahaPemain[i].isBoostP()) {
-                persen = randomPersen(usahaPemain[i].getMin() - usahaPemain[i].getPersenUp(), usahaPemain[i].getMax() + 1);
+                persen = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0] - usahaPemain[i].getPersenUp(), usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
 
                 usahaPemain[i].setTempP(usahaPemain[i].getTempP() - 1);
                 if (usahaPemain[i].getTempP() == 0) {
@@ -257,7 +317,7 @@ public class c_usaha extends controller {
 
                 }
             } else {
-                persen = ThreadLocalRandom.current().nextInt(usahaPemain[i].getMin(), usahaPemain[i].getMax() + 1);
+                persen = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0], usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
             }
             System.out.println("Persen :" + String.valueOf(persen));
 
@@ -281,7 +341,7 @@ public class c_usaha extends controller {
             }
 
             if (usahaPemain[i].isBoostS()) {
-                int persenP = randomPersen(usahaPemain[i].getMin() - 5, usahaPemain[i].getMax() + 1);
+                int persenP = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0], usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
                 int persenO = ThreadLocalRandom.current().nextInt(-5, -15 - 1);
                 int penghasilanB = penghasilan * persenP / 100;
                 penghasilanKotor = penghasilanKotor + penghasilanB;
@@ -689,6 +749,11 @@ public class c_usaha extends controller {
         public void actionPerformed(ActionEvent ae) {
             pemain.setPenghasilan(hitungPenghasilan());
             pemain.setDana(pemain.getDana() + pemain.getPenghasilan());
+            if(pemain.getBulan()>12){
+                pemain.setBulan(pemain.getBulan()+1);
+            }else{
+                pemain.setBulan(0);
+            }
             updateDana();
             updatePenghasilan();
             tambahTurn();

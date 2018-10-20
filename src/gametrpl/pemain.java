@@ -4,37 +4,59 @@
  * and open the template in the editor.
  */
 package gametrpl;
+
 import gametrpl.usaha;
 import gametrpl.property;
 import gametrpl.kendaraan;
 import java.util.ArrayList;
+
 /**
  *
  * @author ROG
  */
 public class pemain {
+
     String pemain;
-    int dana,penghasilan,turn;
+    int dana, penghasilan, turn,bulan=0;
     usaha[] usaha;
     ArrayList<kendaraan> kendaraan;
     ArrayList<property> property;
-    
-    
 
-    public pemain(String pemain,int turn) {
+    public pemain(String pemain, int turn) {
         this.turn = turn;
         this.pemain = pemain;
         dana = 10000;
         penghasilan = 0;
         usaha = new usaha[4];
+        int[][] minMax = {
+            {0, 0},
+            {0, 0},
+            {0, 0},
+            {0, 0},
+            {0, 0},
+            {0, 0},
+            {0, 0},
+            {0, 0},
+            {0, 0},
+            {0, 0},
+            {0, 0},
+            {0, 0}};
         for (int i = 0; i < usaha.length; i++) {
-            usaha[i] = new usaha("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            usaha[i] = new usaha("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, minMax);
         }
         kendaraan = new ArrayList<kendaraan>();
         property = new ArrayList<property>();
     }
-    
-    public pemain(pemain pemain, int turn){
+
+    public int getBulan() {
+        return bulan;
+    }
+
+    public void setBulan(int bulan) {
+        this.bulan = bulan;
+    }
+
+    public pemain(pemain pemain, int turn) {
         this.pemain = pemain.getPemain();
         this.turn = turn;
         this.dana = pemain.getDana();
@@ -64,48 +86,48 @@ public class pemain {
     public void setPenghasilan(int penghasilan) {
         this.penghasilan = penghasilan;
     }
-    
-    public void tambahDana(int dana){
+
+    public void tambahDana(int dana) {
         this.dana += dana;
     }
-    
-    public usaha[] getUsaha(){
+
+    public usaha[] getUsaha() {
         return usaha;
     }
 
     public void setUsaha(usaha[] usaha) {
         this.usaha = usaha;
     }
-    
-    public usaha getLaundry(){
+
+    public usaha getLaundry() {
         return usaha[0];
     }
-    
-    public void setLaundry(usaha laundry){
-        usaha[0]=laundry;
+
+    public void setLaundry(usaha laundry) {
+        usaha[0] = laundry;
     }
-    
-    public usaha getKedaiKopi(){
+
+    public usaha getKedaiKopi() {
         return usaha[1];
     }
-    
-    public void setKedaiKopi(usaha kedaiKopi){
-        usaha[1]=kedaiKopi;
+
+    public void setKedaiKopi(usaha kedaiKopi) {
+        usaha[1] = kedaiKopi;
     }
-    
-    public usaha getPercetakan(){
+
+    public usaha getPercetakan() {
         return usaha[2];
     }
-    
-    public void setPercetakan(usaha percetakan){
-        usaha[2]= percetakan;
+
+    public void setPercetakan(usaha percetakan) {
+        usaha[2] = percetakan;
     }
-    
-    public usaha getIndomaret(){
+
+    public usaha getIndomaret() {
         return usaha[3];
     }
-    
-    public void setIndomaret(usaha indomaret){
+
+    public void setIndomaret(usaha indomaret) {
         usaha[3] = indomaret;
     }
 
@@ -124,17 +146,16 @@ public class pemain {
     public void setKendaraan(ArrayList<kendaraan> kendaraan) {
         this.kendaraan = kendaraan;
     }
-    
-    
-    public void tambahKendaraan(kendaraan kendaraan){
+
+    public void tambahKendaraan(kendaraan kendaraan) {
         this.kendaraan.add(kendaraan);
     }
-    
-    public int cariKendaraan(String nama){
-        int jumlah=0;
+
+    public int cariKendaraan(String nama) {
+        int jumlah = 0;
         for (int i = 0; i < kendaraan.size(); i++) {
             if (kendaraan.get(i).getNama().equalsIgnoreCase(nama)) {
-                jumlah+=1;
+                jumlah += 1;
             }
         }
         return jumlah;
@@ -147,28 +168,27 @@ public class pemain {
     public void setProperty(ArrayList<property> property) {
         this.property = property;
     }
-    
-    public void tambahProperty(property property){
+
+    public void tambahProperty(property property) {
         this.property.add(property);
     }
-    
-    public int getJumlahKendaraan(){
-       return kendaraan.size();
+
+    public int getJumlahKendaraan() {
+        return kendaraan.size();
     }
-    
-    public int getJumlahProperty(){
-       return property.size();
+
+    public int getJumlahProperty() {
+        return property.size();
     }
-    
-    public int cariProperty(String nama){
-        int jumlah=0;
+
+    public int cariProperty(String nama) {
+        int jumlah = 0;
         for (int i = 0; i < property.size(); i++) {
             if (property.get(i).getNama().equalsIgnoreCase(nama)) {
-                jumlah+=1;
+                jumlah += 1;
             }
         }
         return jumlah;
     }
-    
-    
+
 }

@@ -97,9 +97,9 @@ public class c_dealer extends controller {
         int penghasilan, penghasilanSeluruh = 0, penghasilanKotor, penghasilanBersih, operasional, persen = 0;
         usaha[] usahaPemain = pemain.getUsaha();
         for (int i = 0; i < usahaPemain.length; i++) {
-            //generate angka random berdasarkan min max usaha
+            //generate angka random berdasarkan trend usaha
             if (usahaPemain[i].isBoostP()) {
-                persen = randomPersen(usahaPemain[i].getMin() - usahaPemain[i].getPersenUp(), usahaPemain[i].getMax() + 1);
+                persen = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0] - usahaPemain[i].getPersenUp(), usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
 
                 usahaPemain[i].setTempP(usahaPemain[i].getTempP() - 1);
                 if (usahaPemain[i].getTempP() == 0) {
@@ -108,7 +108,7 @@ public class c_dealer extends controller {
 
                 }
             } else {
-                persen = ThreadLocalRandom.current().nextInt(usahaPemain[i].getMin(), usahaPemain[i].getMax() + 1);
+                persen = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0], usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
             }
             System.out.println("Persen :" + String.valueOf(persen));
 
@@ -132,7 +132,7 @@ public class c_dealer extends controller {
             }
 
             if (usahaPemain[i].isBoostS()) {
-                int persenP = randomPersen(usahaPemain[i].getMin() - 5, usahaPemain[i].getMax() + 1);
+                int persenP = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0], usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
                 int persenO = ThreadLocalRandom.current().nextInt(-5, -15 - 1);
                 int penghasilanB = penghasilan * persenP / 100;
                 penghasilanKotor = penghasilanKotor + penghasilanB;
@@ -194,6 +194,11 @@ public class c_dealer extends controller {
         public void actionPerformed(ActionEvent ae) {
             pemain.setPenghasilan(hitungPenghasilan());
             pemain.setDana(pemain.getDana() + pemain.getPenghasilan());
+            if(pemain.getBulan()>12){
+                pemain.setBulan(pemain.getBulan()+1);
+            }else{
+                pemain.setBulan(0);
+            }
             updateDana();
             updatePenghasilan();
             tambahTurn();
