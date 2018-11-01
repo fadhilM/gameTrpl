@@ -52,6 +52,7 @@ public class halamanNewGame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1050, 750));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 304, 45));
 

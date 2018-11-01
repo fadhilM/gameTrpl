@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package gametrpl.Controller;
 
@@ -9,8 +9,10 @@ import gametrpl.pemain;
 import gametrpl.kendaraan;
 import gametrpl.Controller.c_usaha;
 import gametrpl.Controller.c_property;
+import gametrpl.Controller.c_bank;
 import gametrpl.View.dealer;
 import gametrpl.usaha;
+import gametrpl.utang;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,37 +31,40 @@ public class c_dealer extends controller {
     kendaraan beli;
     c_usaha c_usaha;
     c_property c_property;
+    c_bank c_bank;
 
-    kendaraan[] daftarKendaraan;
+    String[] daftarKendaraan;
 
     c_dealer(pemain pemain) {
 
         this.pemain = pemain;
 
-        daftarKendaraan = new kendaraan[8];
-        daftarKendaraan[0] = new kendaraan("kendaraan1", 1000);
-        daftarKendaraan[1] = new kendaraan("kendaraan2", 1000);
-        daftarKendaraan[2] = new kendaraan("kendaraan3", 1000);
-        daftarKendaraan[3] = new kendaraan("kendaraan4", 1000);
-        daftarKendaraan[4] = new kendaraan("kendaraan5", 1000);
-        daftarKendaraan[5] = new kendaraan("kendaraan6", 1000);
-        daftarKendaraan[6] = new kendaraan("kendaraan7", 1000);
-        daftarKendaraan[7] = new kendaraan("kendaraan8", 1000);
-
         dealer = new dealer();
         dealer.setVisible(true);
+
+        daftarKendaraan = new String[8];
+
+        daftarKendaraan[0] = "Honda Beat";
+        daftarKendaraan[1] = "Honda Pcx";
+        daftarKendaraan[2] = "Honda CBR";
+        daftarKendaraan[3] = "Kawasaki Ninja";
+        daftarKendaraan[4] = "Toyota Yaris";
+        daftarKendaraan[5] = "Honda Mobilio";
+        daftarKendaraan[6] = "Audi A4";
+        daftarKendaraan[7] = "BMW M5";
 
         dealer.getPenghasilanTxt().setText(String.valueOf(pemain.getPenghasilan()));
         updateDana();
         updateKendaraanSpesifik();
         updateTurn();
-        
+
         //label property dan kendaraan
         dealer.getKendaraanTxt().setText(String.valueOf(this.pemain.getJumlahKendaraan()));
         dealer.getPropertyTxt().setText(String.valueOf(this.pemain.getJumlahProperty()));
 
         dealer.getB_usaha().addActionListener(new klikUsaha());
         dealer.getB_property().addActionListener(new klikProperty());
+        dealer.getB_bank().addActionListener(new klikBank());
 
         dealer.getBeliKendaraan1().addActionListener(new bK1());
         dealer.getBeliKendaraan2().addActionListener(new bK2());
@@ -74,6 +79,7 @@ public class c_dealer extends controller {
     }
 
     private void pesen(kendaraan kendaraan) {
+        kendaraan.randomId();
         beli = kendaraan;
     }
 
@@ -87,6 +93,9 @@ public class c_dealer extends controller {
 
     public void updateKendaraan() {
         dealer.getKendaraanTxt().setText(String.valueOf(pemain.getJumlahKendaraan()));
+    }
+     public void updateProperty() {
+        dealer.getPropertyTxt().setText(String.valueOf(pemain.getJumlahProperty()));
     }
 
     private int randomPersen(int min, int max) {
@@ -105,24 +114,20 @@ public class c_dealer extends controller {
                 if (usahaPemain[i].getTempP() == 0) {
                     usahaPemain[i].setBoostP(false);
                     usahaPemain[i].setTempP(usahaPemain[i].getP());
-
                 }
             } else {
                 persen = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0], usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
             }
-            System.out.println("Persen :" + String.valueOf(persen));
 
             penghasilan = usahaPemain[i].getPenghasilan();
             int minPlusPenghasilan = persen * penghasilan / 100;
             penghasilanKotor = penghasilan - minPlusPenghasilan;
 
-            System.out.println("penghasilan :" + String.valueOf(penghasilanKotor));
             usahaPemain[i].setPenghasilan(penghasilanKotor);
 
             operasional = usahaPemain[i].getOperasional();
             if (usahaPemain[i].isBoostO()) {
                 int persenB = ThreadLocalRandom.current().nextInt(-15, -5 - 1);
-                System.out.println(String.valueOf(persenB));
                 operasional = operasional - (operasional * persenB / 100);
                 usahaPemain[i].setTempO(usahaPemain[i].getTempO() - 1);
                 if (usahaPemain[i].getTempO() == 0) {
@@ -151,7 +156,7 @@ public class c_dealer extends controller {
         pemain.setUsaha(usahaPemain);
         return penghasilanSeluruh;
     }
-    
+
     public void updatePenghasilan() {
         dealer.getPenghasilanTxt().setText(String.valueOf(pemain.getPenghasilan()));
     }
@@ -159,7 +164,7 @@ public class c_dealer extends controller {
     public void updateKendaraanSpesifik() {
         int[] jumlah = new int[daftarKendaraan.length];
         for (int i = 0; i < daftarKendaraan.length; i++) {
-            jumlah[i] = pemain.cariKendaraan(daftarKendaraan[i].getNama());
+            jumlah[i] = pemain.cariKendaraan(daftarKendaraan[i]);
         }
         dealer.getJmlh1().setText(String.valueOf(jumlah[0]));
         dealer.getJmlh2().setText(String.valueOf(jumlah[1]));
@@ -170,13 +175,22 @@ public class c_dealer extends controller {
         dealer.getJmlh7().setText(String.valueOf(jumlah[6]));
         dealer.getJmlh8().setText(String.valueOf(jumlah[7]));
     }
-    
+
     public void tambahTurn() {
         pemain.setTurn(pemain.getTurn() + 1);
     }
-    
+
     public void updateTurn() {
         dealer.getTurnTxt().setText(String.valueOf(pemain.getTurn()));
+    }
+
+    private class klikBank implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            c_bank = new c_bank(pemain);
+            dealer.dispose();
+        }
     }
 
     private class klikProperty implements ActionListener {
@@ -194,10 +208,34 @@ public class c_dealer extends controller {
         public void actionPerformed(ActionEvent ae) {
             pemain.setPenghasilan(hitungPenghasilan());
             pemain.setDana(pemain.getDana() + pemain.getPenghasilan());
-            if(pemain.getBulan()>12){
-                pemain.setBulan(pemain.getBulan()+1);
-            }else{
+            if (pemain.getBulan() > 12) {
+                pemain.setBulan(pemain.getBulan() + 1);
+            } else {
                 pemain.setBulan(0);
+            }
+            if (pemain.getUtang() != null) {
+                if (pemain.getDana() > pemain.getUtang().getAngsuran()) {
+                    pemain.setDana((int) (pemain.getDana() - pemain.getUtang().getAngsuran()));
+                    pemain.getUtang().bayarUtang();
+                    if (pemain.getUtang().getTotalPembayaran() < 1) {
+                        utang utang = null;
+                        pemain.setUtang(utang);
+                        popup("Utang Telah Lunas");
+                    } else {
+                        popup("Anda Membayar Angsuran Pinjaman Sebesar: " + String.valueOf(pemain.getUtang().getAngsuran()) + " sisa utang : " + String.valueOf(pemain.getUtang().getTotalPembayaran()));
+                    }
+                } else {
+                    if (pemain.getUtang().isJaminan()) {
+                        pemain.sitaKendaraan(pemain.getUtang().getKendaraan().getId());
+                        updateKendaraan();
+
+                    } else {
+                        pemain.sitaProperty(pemain.getUtang().getProperty().getId());
+                        updateProperty();
+                    }
+                    popup("Uang Anda tidak Cukup untuk melunasi utang, jaminan anda akan disita oleh bank");
+                }
+
             }
             updateDana();
             updatePenghasilan();
@@ -210,16 +248,25 @@ public class c_dealer extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if (uangCukup(pemain.getDana(), beli.getHarga())) {
-                pemain.setDana(pemain.getDana() - beli.getHarga());
-                beli.setTurn(pemain.getTurn());
-                pemain.getKendaraan().add(beli);
-                updateDana();
-                updateKendaraan();
-                updateKendaraanSpesifik();
-                popup("Kendaraan Berhasil Dibeli");
-            } else {
-                popup("Maaf Uang Anda Tidak Cukup");
+            if (beli != null) {
+                if (uangCukup(pemain.getDana(), beli.getHarga())) {
+                    pemain.setDana(pemain.getDana() - beli.getHarga());
+                    beli.setTurn(pemain.getTurn());
+                    pemain.tambahKendaraan(beli);
+                    System.out.println("+++++++");
+                    for (int i = 0; i < pemain.getKendaraan().size(); i++) {
+                        System.out.print(pemain.getKendaraan().get(i).getId());
+                        System.out.println("," + pemain.getKendaraan().get(i).getTurn());
+                    }
+                    updateDana();
+                    updateKendaraan();
+                    updateKendaraanSpesifik();
+                    popup("Kendaraan Berhasil Dibeli");
+                } else {
+                    popup("Maaf Uang Anda Tidak Cukup");
+                }
+            }else{
+                popup("Silahkan Pilih Kendaraan Yang Akan Dibeli");
             }
         }
     }
@@ -228,8 +275,7 @@ public class c_dealer extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarKendaraan[0]);
-            System.out.println("asdasd");
+            pesen(new kendaraan("Honda Beat", 15500, true));
 
         }
     }
@@ -238,7 +284,7 @@ public class c_dealer extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarKendaraan[1]);
+            pesen(new kendaraan("Honda Pcx", 28000, true));
         }
     }
 
@@ -246,7 +292,7 @@ public class c_dealer extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarKendaraan[2]);
+            pesen(new kendaraan("Honda CBR", 34000, true));
         }
     }
 
@@ -254,7 +300,7 @@ public class c_dealer extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarKendaraan[3]);
+            pesen(new kendaraan("Kawasaki Ninja", 71000, true));
         }
     }
 
@@ -262,7 +308,7 @@ public class c_dealer extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarKendaraan[4]);
+            pesen(new kendaraan("Toyota Yaris", 232000, false));
         }
     }
 
@@ -270,7 +316,7 @@ public class c_dealer extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarKendaraan[5]);
+            pesen(new kendaraan("Honda Mobilio", 247000, false));
         }
     }
 
@@ -278,7 +324,7 @@ public class c_dealer extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarKendaraan[6]);
+            pesen(new kendaraan("Audi A4", 1200000, false));
         }
     }
 
@@ -286,7 +332,7 @@ public class c_dealer extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarKendaraan[7]);
+            pesen(new kendaraan("BMW M5", 4000000, false));
         }
     }
 

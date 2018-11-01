@@ -298,7 +298,7 @@ public class halamanUsaha extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        Fotokopi = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -372,10 +372,11 @@ public class halamanUsaha extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1050, 750));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Percetakan");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, -1, 30));
+        Fotokopi.setText("Percetakan");
+        getContentPane().add(Fotokopi, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, -1, 30));
 
         jLabel4.setText("Minimarket");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 450, -1, 30));
@@ -637,6 +638,7 @@ public class halamanUsaha extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fotokopi;
     private javax.swing.JButton aa;
     private javax.swing.JButton ab;
     private javax.swing.JButton ac;
@@ -667,7 +669,6 @@ public class halamanUsaha extends javax.swing.JFrame {
     private javax.swing.JButton dc;
     private javax.swing.JButton dd;
     private javax.swing.JButton de;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

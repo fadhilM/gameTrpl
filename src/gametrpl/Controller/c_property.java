@@ -9,8 +9,10 @@ import gametrpl.pemain;
 import gametrpl.property;
 import gametrpl.Controller.c_usaha;
 import gametrpl.Controller.c_dealer;
+import gametrpl.Controller.c_bank;
 import gametrpl.View.poperty;
 import gametrpl.usaha;
+import gametrpl.utang;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,29 +24,30 @@ import javax.swing.JOptionPane;
  *
  * @author ROG
  */
-public class c_property extends controller{
+public class c_property extends controller {
 
     pemain pemain;
     poperty poperty;
     c_usaha c_usaha;
     c_dealer c_dealer;
     property beli;
+    c_bank c_bank;
 
-    property[] daftarProperty;
+    String[] daftarProperty;
 
     public c_property(pemain pemain) {
         this.pemain = pemain;
 
-        daftarProperty = new property[8];
+        daftarProperty = new String[8];
 
-        daftarProperty[0] = new property("Property1", 1000);
-        daftarProperty[1] = new property("Property2", 1000);
-        daftarProperty[2] = new property("Property3", 1000);
-        daftarProperty[3] = new property("Property4", 1000);
-        daftarProperty[4] = new property("Property5", 1000);
-        daftarProperty[5] = new property("Property6", 1000);
-        daftarProperty[6] = new property("Property7", 1000);
-        daftarProperty[7] = new property("Property8", 1000);
+        daftarProperty[0] = "21m^2";
+        daftarProperty[1] = "36m^2";
+        daftarProperty[2] = "45m^2";
+        daftarProperty[3] = "54m^2";
+        daftarProperty[4] = "60m^2";
+        daftarProperty[5] = "70m^2";
+        daftarProperty[6] = "90m^2";
+        daftarProperty[7] = "120m^2";
 
         poperty = new poperty();
         poperty.setVisible(true);
@@ -60,6 +63,7 @@ public class c_property extends controller{
 
         poperty.getB_usaha().addActionListener(new klikUsaha());
         poperty.getB_dealer().addActionListener(new klikDealer());
+        poperty.getB_bank().addActionListener(new klikBank());
 
         poperty.getBeliProperty1().addActionListener(new bK1());
         poperty.getBeliProperty2().addActionListener(new bK2());
@@ -87,6 +91,10 @@ public class c_property extends controller{
 
     public void updateProperty() {
         poperty.getPropertyTxt().setText(String.valueOf(pemain.getJumlahProperty()));
+    }
+    
+    public void updateKendaraan() {
+        poperty.getKendaraanTxt().setText(String.valueOf(pemain.getJumlahKendaraan()));
     }
 
     private int randomPersen(int min, int max) {
@@ -151,7 +159,7 @@ public class c_property extends controller{
         pemain.setUsaha(usahaPemain);
         return penghasilanSeluruh;
     }
-    
+
     public void updatePenghasilan() {
         poperty.getPenghasilanTxt().setText(String.valueOf(pemain.getPenghasilan()));
     }
@@ -159,7 +167,7 @@ public class c_property extends controller{
     public void updatePropertySpesifik() {
         int[] jumlah = new int[daftarProperty.length];
         for (int i = 0; i < daftarProperty.length; i++) {
-            jumlah[i] = pemain.cariProperty(daftarProperty[i].getNama());
+            jumlah[i] = pemain.cariProperty(daftarProperty[i]);
         }
         poperty.getJmlh1().setText(String.valueOf(jumlah[0]));
         poperty.getJmlh2().setText(String.valueOf(jumlah[1]));
@@ -170,13 +178,25 @@ public class c_property extends controller{
         poperty.getJmlh7().setText(String.valueOf(jumlah[6]));
         poperty.getJmlh8().setText(String.valueOf(jumlah[7]));
     }
-    
+
     public void tambahTurn() {
         pemain.setTurn(pemain.getTurn() + 1);
     }
-    
+
     public void updateTurn() {
         poperty.getTurnTxt().setText(String.valueOf(pemain.getTurn()));
+    }
+
+    private class klikBank implements ActionListener {
+
+        public klikBank() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            c_bank = new c_bank(pemain);
+            poperty.dispose();
+        }
     }
 
     private class klikDealer implements ActionListener {
@@ -187,17 +207,41 @@ public class c_property extends controller{
             poperty.dispose();
         }
     }
-    
+
     private class klikNextTurn implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
             pemain.setPenghasilan(hitungPenghasilan());
             pemain.setDana(pemain.getDana() + pemain.getPenghasilan());
-            if(pemain.getBulan()>12){
-                pemain.setBulan(pemain.getBulan()+1);
-            }else{
+            if (pemain.getBulan() > 12) {
+                pemain.setBulan(pemain.getBulan() + 1);
+            } else {
                 pemain.setBulan(0);
+            }
+            if (pemain.getUtang() != null) {
+                if (pemain.getDana() > pemain.getUtang().getAngsuran()) {
+                    pemain.setDana((int) (pemain.getDana() - pemain.getUtang().getAngsuran()));
+                    pemain.getUtang().bayarUtang();
+                    if (pemain.getUtang().getTotalPembayaran() < 1) {
+                        utang utang = null;
+                        pemain.setUtang(utang);
+                        popup("Utang Telah Lunas");
+                    } else {
+                        popup("Anda Membayar Angsuran Pinjaman Sebesar: " + String.valueOf(pemain.getUtang().getAngsuran()) + " sisa utang : " + String.valueOf(pemain.getUtang().getTotalPembayaran()));
+                    }
+                } else {
+                    if (pemain.getUtang().isJaminan()) {
+                        pemain.sitaKendaraan(pemain.getUtang().getKendaraan().getId());
+                        updateKendaraan();
+
+                    } else {
+                        pemain.sitaProperty(pemain.getUtang().getProperty().getId());
+                        updateProperty();
+                    }
+                    popup("Uang Anda tidak Cukup untuk melunasi utang, jaminan anda akan disita oleh bank");
+                }
+
             }
             updateDana();
             updatePenghasilan();
@@ -210,25 +254,30 @@ public class c_property extends controller{
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if (uangCukup(pemain.getDana(), beli.getHarga())) {
-                pemain.setDana(pemain.getDana() - beli.getHarga());
-                beli.setTurn(pemain.getTurn());
-                pemain.getProperty().add(beli);
-                updateDana();
-                updateProperty();
-                updatePropertySpesifik();
-                popup("Property Berhasil Dibeli");
+            if (beli != null) {
+                if (uangCukup(pemain.getDana(), beli.getHarga())) {
+                    pemain.setDana(pemain.getDana() - beli.getHarga());
+                    beli.setTurn(pemain.getTurn());
+                    pemain.getProperty().add(beli);
+                    updateDana();
+                    updateProperty();
+                    updatePropertySpesifik();
+                    popup("Property Berhasil Dibeli");
+                } else {
+                    popup("Maaf Uang Anda Tidak Cukup");
+                }
             } else {
-                popup("Maaf Uang Anda Tidak Cukup");
+                JOptionPane.showMessageDialog(poperty, "Silahkan Pilih Property Yang Akan Dibeli");
             }
+
         }
     }
-    
+
     private class bK1 implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarProperty[0]);
+            pesen(new property("21m^2", 390000));
 
         }
     }
@@ -237,7 +286,7 @@ public class c_property extends controller{
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarProperty[1]);
+            pesen(new property("36m^2", 420000));
         }
     }
 
@@ -245,7 +294,7 @@ public class c_property extends controller{
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarProperty[2]);
+            pesen(new property("45m^2", 500000));
         }
     }
 
@@ -253,7 +302,7 @@ public class c_property extends controller{
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarProperty[3]);
+            pesen(new property("54m^2", 670000));
         }
     }
 
@@ -261,7 +310,7 @@ public class c_property extends controller{
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarProperty[4]);
+            pesen(new property("60m^2", 700000));
         }
     }
 
@@ -269,7 +318,7 @@ public class c_property extends controller{
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarProperty[5]);
+            pesen(new property("70m^2", 900000));
         }
     }
 
@@ -277,7 +326,7 @@ public class c_property extends controller{
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarProperty[6]);
+            pesen(new property("90m^2", 1200000));
         }
     }
 
@@ -285,7 +334,7 @@ public class c_property extends controller{
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            pesen(daftarProperty[7]);
+            pesen(new property("120m^2", 4000000));
         }
     }
 

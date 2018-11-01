@@ -1,15 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package gametrpl.Controller;
+import org.apache.commons.math3.distribution.NormalDistribution;
 
 import gametrpl.View.halamanUsaha;
 import gametrpl.pemain;
 import gametrpl.usaha;
 import gametrpl.Controller.c_dealer;
 import gametrpl.Controller.c_property;
+import gametrpl.Controller.c_bank;
+import gametrpl.utang;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -28,7 +31,7 @@ public class c_usaha extends controller {
     //usaha yang ada
     usaha laundry, kedaiKopi, percetakan, indomaret;
 
-    //persentase min max penghasilan 
+    //persentase min max penghasilan
     int min = -20, max = 80;
 
     c_usaha(pemain pemain, boolean isNewGame) {
@@ -50,8 +53,7 @@ public class c_usaha extends controller {
             {-10, 10},
             {-10, 10},
             {-10, 10}};
-        
-        
+
         //trend kedai kopi
         int[][] minMax2 = {
             {-20, 5},
@@ -66,7 +68,7 @@ public class c_usaha extends controller {
             {-7, 15},
             {-10, 10},
             {-10, 10}};
-        
+
         //trend fotokopi
         int[][] minMax3 = {
             {-7, 15},
@@ -81,7 +83,7 @@ public class c_usaha extends controller {
             {-10, 10},
             {-10, 10},
             {-20, 10}};
-        
+
         //trend indomaret
         int[][] minMax4 = {
             {-20, 5},
@@ -186,14 +188,14 @@ public class c_usaha extends controller {
         halamanUsaha.getBc().addActionListener(new klikUpgradeB3());
         halamanUsaha.getCc().addActionListener(new klikUpgradeC3());
         halamanUsaha.getDc().addActionListener(new klikUpgradeD3());
-//        
+//
 //        //eventListener upgrade 4 : boost operasional
         halamanUsaha.getAd().addActionListener(new klikUpgradeA4());
         halamanUsaha.getBd().addActionListener(new klikUpgradeB4());
         halamanUsaha.getCd().addActionListener(new klikUpgradeC4());
         halamanUsaha.getDd().addActionListener(new klikUpgradeD4());
-//        
-        //eventListener upgrade 5 : spesial boost
+//
+//eventListener upgrade 5 : spesial boost
         halamanUsaha.getAe().addActionListener(new klikUpgradeA5());
         halamanUsaha.getBe().addActionListener(new klikUpgradeB5());
         halamanUsaha.getCe().addActionListener(new klikUpgradeC5());
@@ -201,6 +203,7 @@ public class c_usaha extends controller {
 
         halamanUsaha.getB_dealer().addActionListener(new klikDealer());
         halamanUsaha.getB_property().addActionListener(new klikProperty());
+        halamanUsaha.getB_bank().addActionListener(new klikBank());
     }
 
     public void tambahTurn() {
@@ -369,6 +372,15 @@ public class c_usaha extends controller {
             popup("Selamat, Usaha Anda Berhasil Di Upgrade");
         } else {
             popup("Maaf Uang Yang Anda Miliki Tidak Cukup");
+        }
+    }
+
+    private class klikBank implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            c_bank c_bank = new c_bank(pemain);
+            halamanUsaha.dispose();
         }
     }
 
@@ -599,6 +611,13 @@ public class c_usaha extends controller {
             }
         }
     }
+    
+    public void updateKendaraan() {
+        halamanUsaha.getKendaraanTxt().setText(String.valueOf(pemain.getJumlahKendaraan()));
+    }
+     public void updateProperty() {
+        halamanUsaha.getPropertyTxt().setText(String.valueOf(pemain.getJumlahProperty()));
+    }
 
     private class klikUpgradeB1 implements ActionListener {
 
@@ -643,21 +662,23 @@ public class c_usaha extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if (uangCukup(pemain.getDana(), laundry.getModal())) {
-                pemain.setDana(pemain.getDana() - laundry.getModal());
-                pemain.setLaundry(laundry);
-                popup("Selamat Usaha Berhasil Dibuat");
-                updateDana();
-                //label upgrade usaha 1
-                halamanUsaha.getPenghasilan1().setText(String.valueOf(pemain.getLaundry().getPenghasilan()));
-                halamanUsaha.getOperasional1().setText(String.valueOf(pemain.getLaundry().getOperasional()));
-                halamanUsaha.getU11txt().setText(String.valueOf(pemain.getLaundry().getuPenghasilan()));
-                halamanUsaha.getU12txt().setText(String.valueOf(pemain.getLaundry().getuOperasional()));
-                halamanUsaha.getU13txt().setText(String.valueOf(pemain.getLaundry().getbPenghasilan()));
-                halamanUsaha.getU14txt().setText(String.valueOf(pemain.getLaundry().getbOperasional()));
-                halamanUsaha.getU15txt().setText(String.valueOf(pemain.getLaundry().getbSpesial()));
-            } else {
-                popup("Maaf, Dana yang anda miliki tidak mencukupi untuk membuat usaha ini");
+            if (!udahPunya(laundry, 0)) {
+                if (uangCukup(pemain.getDana(), laundry.getModal())) {
+                    pemain.setDana(pemain.getDana() - laundry.getModal());
+                    pemain.setLaundry(laundry);
+                    popup("Selamat Usaha Berhasil Dibuat");
+                    updateDana();
+                    //label upgrade usaha 1
+                    halamanUsaha.getPenghasilan1().setText(String.valueOf(pemain.getLaundry().getPenghasilan()));
+                    halamanUsaha.getOperasional1().setText(String.valueOf(pemain.getLaundry().getOperasional()));
+                    halamanUsaha.getU11txt().setText(String.valueOf(pemain.getLaundry().getuPenghasilan()));
+                    halamanUsaha.getU12txt().setText(String.valueOf(pemain.getLaundry().getuOperasional()));
+                    halamanUsaha.getU13txt().setText(String.valueOf(pemain.getLaundry().getbPenghasilan()));
+                    halamanUsaha.getU14txt().setText(String.valueOf(pemain.getLaundry().getbOperasional()));
+                    halamanUsaha.getU15txt().setText(String.valueOf(pemain.getLaundry().getbSpesial()));
+                } else {
+                    popup("Maaf, Dana yang anda miliki tidak mencukupi untuk membuat usaha ini");
+                }
             }
         }
     }
@@ -666,22 +687,24 @@ public class c_usaha extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if (uangCukup(pemain.getDana(), kedaiKopi.getModal())) {
-                pemain.setDana(pemain.getDana() - kedaiKopi.getModal());
-                pemain.setKedaiKopi(kedaiKopi);
-                popup("Selamat Usaha Berhasil Dibuat");
-                updateDana();
-                //label upgrade usaha 2
-                halamanUsaha.getPenghasilan2().setText(String.valueOf(pemain.getKedaiKopi().getPenghasilan()));
-                halamanUsaha.getOperasional2().setText(String.valueOf(pemain.getKedaiKopi().getOperasional()));
-                halamanUsaha.getPenghasilan2().setText(String.valueOf(pemain.getKedaiKopi().getPenghasilan()));
-                halamanUsaha.getU21txt().setText(String.valueOf(pemain.getKedaiKopi().getuPenghasilan()));
-                halamanUsaha.getU22txt().setText(String.valueOf(pemain.getKedaiKopi().getuOperasional()));
-                halamanUsaha.getU23txt().setText(String.valueOf(pemain.getKedaiKopi().getbPenghasilan()));
-                halamanUsaha.getU24txt().setText(String.valueOf(pemain.getKedaiKopi().getbOperasional()));
-                halamanUsaha.getU25txt().setText(String.valueOf(pemain.getKedaiKopi().getbSpesial()));
-            } else {
-                popup("Maaf, Dana yang anda miliki tidak mencukupi untuk membuat usaha ini");
+            if (!udahPunya(kedaiKopi, 1)) {
+                if (uangCukup(pemain.getDana(), kedaiKopi.getModal())) {
+                    pemain.setDana(pemain.getDana() - kedaiKopi.getModal());
+                    pemain.setKedaiKopi(kedaiKopi);
+                    popup("Selamat Usaha Berhasil Dibuat");
+                    updateDana();
+                    //label upgrade usaha 2
+                    halamanUsaha.getPenghasilan2().setText(String.valueOf(pemain.getKedaiKopi().getPenghasilan()));
+                    halamanUsaha.getOperasional2().setText(String.valueOf(pemain.getKedaiKopi().getOperasional()));
+                    halamanUsaha.getPenghasilan2().setText(String.valueOf(pemain.getKedaiKopi().getPenghasilan()));
+                    halamanUsaha.getU21txt().setText(String.valueOf(pemain.getKedaiKopi().getuPenghasilan()));
+                    halamanUsaha.getU22txt().setText(String.valueOf(pemain.getKedaiKopi().getuOperasional()));
+                    halamanUsaha.getU23txt().setText(String.valueOf(pemain.getKedaiKopi().getbPenghasilan()));
+                    halamanUsaha.getU24txt().setText(String.valueOf(pemain.getKedaiKopi().getbOperasional()));
+                    halamanUsaha.getU25txt().setText(String.valueOf(pemain.getKedaiKopi().getbSpesial()));
+                } else {
+                    popup("Maaf, Dana yang anda miliki tidak mencukupi untuk membuat usaha ini");
+                }
             }
         }
     }
@@ -690,21 +713,23 @@ public class c_usaha extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if (uangCukup(pemain.getDana(), percetakan.getModal())) {
-                pemain.setDana(pemain.getDana() - indomaret.getModal());
-                pemain.setPercetakan(percetakan);
-                popup("Selamat Usaha Berhasil Dibuat");
-                updateDana();
-                //label upgrade usaha 3
-                halamanUsaha.getPenghasilan3().setText(String.valueOf(pemain.getPercetakan().getPenghasilan()));
-                halamanUsaha.getOperasional3().setText(String.valueOf(pemain.getPercetakan().getOperasional()));
-                halamanUsaha.getU31txt().setText(String.valueOf(pemain.getPercetakan().getuPenghasilan()));
-                halamanUsaha.getU32txt().setText(String.valueOf(pemain.getPercetakan().getuOperasional()));
-                halamanUsaha.getU33txt().setText(String.valueOf(pemain.getPercetakan().getbPenghasilan()));
-                halamanUsaha.getU34txt().setText(String.valueOf(pemain.getPercetakan().getbOperasional()));
-                halamanUsaha.getU35txt().setText(String.valueOf(pemain.getPercetakan().getbSpesial()));
-            } else {
-                popup("Maaf, Dana yang anda miliki tidak mencukupi untuk membuat usaha ini");
+            if (!udahPunya(percetakan, 2)) {
+                if (uangCukup(pemain.getDana(), percetakan.getModal())) {
+                    pemain.setDana(pemain.getDana() - indomaret.getModal());
+                    pemain.setPercetakan(percetakan);
+                    popup("Selamat Usaha Berhasil Dibuat");
+                    updateDana();
+                    //label upgrade usaha 3
+                    halamanUsaha.getPenghasilan3().setText(String.valueOf(pemain.getPercetakan().getPenghasilan()));
+                    halamanUsaha.getOperasional3().setText(String.valueOf(pemain.getPercetakan().getOperasional()));
+                    halamanUsaha.getU31txt().setText(String.valueOf(pemain.getPercetakan().getuPenghasilan()));
+                    halamanUsaha.getU32txt().setText(String.valueOf(pemain.getPercetakan().getuOperasional()));
+                    halamanUsaha.getU33txt().setText(String.valueOf(pemain.getPercetakan().getbPenghasilan()));
+                    halamanUsaha.getU34txt().setText(String.valueOf(pemain.getPercetakan().getbOperasional()));
+                    halamanUsaha.getU35txt().setText(String.valueOf(pemain.getPercetakan().getbSpesial()));
+                } else {
+                    popup("Maaf, Dana yang anda miliki tidak mencukupi untuk membuat usaha ini");
+                }
             }
         }
     }
@@ -713,21 +738,23 @@ public class c_usaha extends controller {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if (uangCukup(pemain.getDana(), indomaret.getModal())) {
-                pemain.setDana(pemain.getDana() - indomaret.getModal());
-                pemain.setIndomaret(indomaret);
-                popup("Selamat Usaha Berhasil Dibuat");
-                updateDana();
-                //label upgrade usaha 4
-                halamanUsaha.getPenghasilan4().setText(String.valueOf(pemain.getIndomaret().getPenghasilan()));
-                halamanUsaha.getOperasional4().setText(String.valueOf(pemain.getIndomaret().getOperasional()));
-                halamanUsaha.getU41txt().setText(String.valueOf(pemain.getIndomaret().getuPenghasilan()));
-                halamanUsaha.getU42txt().setText(String.valueOf(pemain.getIndomaret().getuOperasional()));
-                halamanUsaha.getU43txt().setText(String.valueOf(pemain.getIndomaret().getbPenghasilan()));
-                halamanUsaha.getU44txt().setText(String.valueOf(pemain.getIndomaret().getbOperasional()));
-                halamanUsaha.getU45txt().setText(String.valueOf(pemain.getIndomaret().getbSpesial()));
-            } else {
-                popup("Maaf, Dana yang anda miliki tidak mencukupi untuk membuat usaha ini");
+            if (!udahPunya(indomaret, 3)) {
+                if (uangCukup(pemain.getDana(), indomaret.getModal())) {
+                    pemain.setDana(pemain.getDana() - indomaret.getModal());
+                    pemain.setIndomaret(indomaret);
+                    popup("Selamat Usaha Berhasil Dibuat");
+                    updateDana();
+                    //label upgrade usaha 4
+                    halamanUsaha.getPenghasilan4().setText(String.valueOf(pemain.getIndomaret().getPenghasilan()));
+                    halamanUsaha.getOperasional4().setText(String.valueOf(pemain.getIndomaret().getOperasional()));
+                    halamanUsaha.getU41txt().setText(String.valueOf(pemain.getIndomaret().getuPenghasilan()));
+                    halamanUsaha.getU42txt().setText(String.valueOf(pemain.getIndomaret().getuOperasional()));
+                    halamanUsaha.getU43txt().setText(String.valueOf(pemain.getIndomaret().getbPenghasilan()));
+                    halamanUsaha.getU44txt().setText(String.valueOf(pemain.getIndomaret().getbOperasional()));
+                    halamanUsaha.getU45txt().setText(String.valueOf(pemain.getIndomaret().getbSpesial()));
+                } else {
+                    popup("Maaf, Dana yang anda miliki tidak mencukupi untuk membuat usaha ini");
+                }
             }
         }
     }
@@ -749,10 +776,35 @@ public class c_usaha extends controller {
         public void actionPerformed(ActionEvent ae) {
             pemain.setPenghasilan(hitungPenghasilan());
             pemain.setDana(pemain.getDana() + pemain.getPenghasilan());
-            if(pemain.getBulan()>12){
-                pemain.setBulan(pemain.getBulan()+1);
-            }else{
+            if (pemain.getBulan() > 12) {
+                pemain.setBulan(pemain.getBulan() + 1);
+            } else {
                 pemain.setBulan(0);
+            }
+            if (pemain.getUtang()!=null) {
+                if (pemain.getDana()>pemain.getUtang().getAngsuran()) {
+                    pemain.setDana((int) (pemain.getDana()-pemain.getUtang().getAngsuran()));
+                    pemain.getUtang().bayarUtang();
+                    System.out.println(String.valueOf(pemain.getUtang().getUtang()));
+                    if (pemain.getUtang().getTotalPembayaran()<1) {
+                        utang utang = null;
+                        pemain.setUtang(utang);
+                        popup("Utang Telah Lunas");
+                    }else{
+                        popup("Anda Membayar Angsuran Pinjaman Sebesar: "+String.valueOf(pemain.getUtang().getAngsuran())+" sisa utang : "+String.valueOf(pemain.getUtang().getTotalPembayaran()));
+                    }
+                }else{
+                    if (pemain.getUtang().isJaminan()) {
+                        pemain.sitaKendaraan(pemain.getUtang().getKendaraan().getId());
+                        updateKendaraan();
+                        
+                    }else{
+                        pemain.sitaProperty(pemain.getUtang().getProperty().getId());
+                        updateProperty();
+                    }
+                    popup("Uang Anda tidak Cukup untuk melunasi utang, jaminan anda akan disita oleh bank");
+                }
+                
             }
             updateDana();
             updatePenghasilan();

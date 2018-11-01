@@ -8,6 +8,7 @@ package gametrpl;
 import gametrpl.usaha;
 import gametrpl.property;
 import gametrpl.kendaraan;
+import gametrpl.utang;
 import java.util.ArrayList;
 
 /**
@@ -21,13 +22,15 @@ public class pemain {
     usaha[] usaha;
     ArrayList<kendaraan> kendaraan;
     ArrayList<property> property;
+    utang utang;
 
     public pemain(String pemain, int turn) {
         this.turn = turn;
         this.pemain = pemain;
-        dana = 10000;
+        dana = 1000000;
         penghasilan = 0;
         usaha = new usaha[4];
+        utang=null;
         int[][] minMax = {
             {0, 0},
             {0, 0},
@@ -46,6 +49,14 @@ public class pemain {
         }
         kendaraan = new ArrayList<kendaraan>();
         property = new ArrayList<property>();
+    }
+
+    public utang getUtang() {
+        return utang;
+    }
+
+    public void setUtang(utang utang) {
+        this.utang = utang;
     }
 
     public int getBulan() {
@@ -189,6 +200,25 @@ public class pemain {
             }
         }
         return jumlah;
+    }
+    
+    public void sitaKendaraan(int id) {
+        for (kendaraan kendaraan : kendaraan) {
+            if (kendaraan.getId()==id) {
+                this.kendaraan.remove(kendaraan);
+            }else{
+                System.out.println("Data Tidak Ditemukan");
+            }
+         }
+    }
+    public void sitaProperty(int id) {
+        for (property property : property) {
+            if (property.getId()==id) {
+                this.property.remove(property);
+            }else{
+                System.out.println("Data Tidak Ditemukan");
+            }
+         }
     }
 
 }

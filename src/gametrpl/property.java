@@ -5,18 +5,30 @@
  */
 package gametrpl;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  *
  * @author ROG
  */
 public class property {
+
     String nama;
-    int harga;
+    int harga, id;
     int turn;
 
     public property(String nama, int harga) {
+        this.id = ThreadLocalRandom.current().nextInt(0, 1000000 + 1);
         this.nama = nama;
         this.harga = harga;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNama() {
@@ -42,8 +54,20 @@ public class property {
     public void setTurn(int turn) {
         this.turn = turn;
     }
-    
-    
-    
-    
+
+    public double hargaJual(pemain pemain) {
+        double hargaJual = 0, umurEkonomis, penyusutan;
+        int sisa, tahun, nilaiResidu, jangkaWaktu;
+        double persenPenyusutan = 0;
+        persenPenyusutan = 5;
+        umurEkonomis = 20;
+        nilaiResidu = harga * 80 / 100;
+        jangkaWaktu = pemain.getTurn() - turn;
+        sisa = jangkaWaktu % 12;
+        tahun = (jangkaWaktu - sisa) / 12;
+        penyusutan = (((persenPenyusutan / 100) * harga) - nilaiResidu) / umurEkonomis;
+        hargaJual = harga + (penyusutan * tahun);
+        return hargaJual;
+    }
+
 }
