@@ -133,6 +133,12 @@ public class poperty extends javax.swing.JFrame {
         return turnTxt;
     }
 
+    public JButton getB_kembali() {
+        return b_kembali;
+    }
+    
+    
+
     
     
     
@@ -159,6 +165,7 @@ public class poperty extends javax.swing.JFrame {
         kendaraanTxt = new javax.swing.JLabel();
         propertyTxt = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        b_kembali = new javax.swing.JButton();
         b_nextTurn = new javax.swing.JButton();
         b_usaha = new javax.swing.JButton();
         b_bank = new javax.swing.JButton();
@@ -243,6 +250,11 @@ public class poperty extends javax.swing.JFrame {
         jLabel1.setFocusable(false);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 750));
 
+        b_kembali.setText("jButton1");
+        b_kembali.setBorderPainted(false);
+        b_kembali.setContentAreaFilled(false);
+        getContentPane().add(b_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 50));
+
         b_nextTurn.setText("next turn");
         b_nextTurn.setBorderPainted(false);
         b_nextTurn.setContentAreaFilled(false);
@@ -319,6 +331,7 @@ public class poperty extends javax.swing.JFrame {
         getContentPane().add(b_beli, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 620, 220, 70));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void b_usahaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_usahaActionPerformed
@@ -367,6 +380,7 @@ public class poperty extends javax.swing.JFrame {
     private javax.swing.JButton b_bank;
     private javax.swing.JButton b_beli;
     private javax.swing.JButton b_dealer;
+    private javax.swing.JButton b_kembali;
     private javax.swing.JButton b_nextTurn;
     private javax.swing.JButton b_property;
     private javax.swing.JButton b_usaha;

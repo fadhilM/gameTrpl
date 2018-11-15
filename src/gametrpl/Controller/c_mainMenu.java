@@ -25,7 +25,7 @@ public class c_mainMenu {
         mainMenu.setVisible(true);
                 
         mainMenu.getB_bermain().addActionListener(new klikMain());
-        mainMenu.getB_caraMain().addActionListener(new klikCaraMain());
+//        mainMenu.getB_caraMain().addActionListener(new klikCaraMain());
     }
 
     private class klikMain implements ActionListener {
@@ -36,11 +36,11 @@ public class c_mainMenu {
         }
     }
 
-    private class klikCaraMain implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            c_caraMain = new c_caraMain();
-        }
-    }    
+//    private class klikCaraMain implements ActionListener {
+//        @Override
+////        public void actionPerformed(ActionEvent ae) {
+////            c_caraMain = new c_caraMain();
+////        }
+//    }    
     
 }

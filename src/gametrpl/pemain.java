@@ -9,7 +9,14 @@ import gametrpl.usaha;
 import gametrpl.property;
 import gametrpl.kendaraan;
 import gametrpl.utang;
+import gametrpl.koneksi;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,11 +25,13 @@ import java.util.ArrayList;
 public class pemain {
 
     String pemain;
-    int dana, penghasilan, turn,bulan=0;
+    int dana, penghasilan, turn,id;
     usaha[] usaha;
     ArrayList<kendaraan> kendaraan;
     ArrayList<property> property;
     utang utang;
+    boolean bencana;
+    String persen,tipeBencana;
 
     public pemain(String pemain, int turn) {
         this.turn = turn;
@@ -30,25 +39,55 @@ public class pemain {
         dana = 1000000;
         penghasilan = 0;
         usaha = new usaha[4];
-        utang=null;
-        int[][] minMax = {
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 0}};
+        utang = null;
         for (int i = 0; i < usaha.length; i++) {
-            usaha[i] = new usaha("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, minMax);
+            usaha[i] = null;
         }
         kendaraan = new ArrayList<kendaraan>();
         property = new ArrayList<property>();
+    }
+
+    public pemain(int id, String nama, int dana, int turn, int idUtang) {
+        
+    }
+    
+    public pemain(int id, String nama, int dana, int turn) {
+        this.id    = id;
+        this.pemain=nama;
+        this.dana = dana;
+        this.turn = turn;
+        usaha = new usaha[4];
+        utang = null;
+        for (int i = 0; i < usaha.length; i++) {
+            usaha[i] = null;
+        }
+        kendaraan = new ArrayList<kendaraan>();
+        property = new ArrayList<property>();
+    }
+
+    public pemain() {
+    }
+    
+    public void startBencana(String persen,String tipeBencana){
+        bencana =true;
+        this.persen = persen;
+        this.tipeBencana = tipeBencana;
+    }
+    
+    public void endBencana(){
+        bencana = false;
+    }
+    
+    public boolean isBencana(){
+        return bencana;
+    }
+
+    public String getPersen() {
+        return persen;
+    }
+
+    public String getTipeBencana() {
+        return tipeBencana;
     }
 
     public utang getUtang() {
@@ -57,21 +96,6 @@ public class pemain {
 
     public void setUtang(utang utang) {
         this.utang = utang;
-    }
-
-    public int getBulan() {
-        return bulan;
-    }
-
-    public void setBulan(int bulan) {
-        this.bulan = bulan;
-    }
-
-    public pemain(pemain pemain, int turn) {
-        this.pemain = pemain.getPemain();
-        this.turn = turn;
-        this.dana = pemain.getDana();
-        this.penghasilan = pemain.getPenghasilan();
     }
 
     public String getPemain() {
@@ -201,24 +225,114 @@ public class pemain {
         }
         return jumlah;
     }
-    
+
     public void sitaKendaraan(int id) {
         for (kendaraan kendaraan : kendaraan) {
-            if (kendaraan.getId()==id) {
+            if (kendaraan.getId() == id) {
                 this.kendaraan.remove(kendaraan);
-            }else{
+            } else {
                 System.out.println("Data Tidak Ditemukan");
             }
-         }
+        }
     }
+
     public void sitaProperty(int id) {
         for (property property : property) {
-            if (property.getId()==id) {
+            if (property.getId() == id) {
                 this.property.remove(property);
-            }else{
+            } else {
                 System.out.println("Data Tidak Ditemukan");
             }
-         }
+        }
+    }
+
+    public List<pemain> getAll() {
+        List<pemain> dataPemain = new ArrayList<>();
+        pemain p;
+        String query = "SELECT * FROM `pemain`";
+
+        try {
+            PreparedStatement statement = koneksi.getConnection().prepareStatement(query);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                p = new pemain(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getInt(4)
+                );
+                dataPemain.add(p);
+            }
+            statement.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(koneksi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataPemain;
+    }
+
+    public pemain getDataPemain(int id) {
+        pemain p;
+        String query = "SELECT * FROM pemain where id_pemain=?";
+
+        try {
+            PreparedStatement statement = koneksi.getConnection().prepareStatement(query);
+            statement.setInt(1, id);
+
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            p = new pemain(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getInt(3),
+                    rs.getInt(4)
+            );
+            statement.close();
+            return p;
+        } catch (SQLException ex) {
+            Logger.getLogger(koneksi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public boolean save() {
+        String query = "INSERT INTO `pemain`(`nama`, `dana`, `turn`) VALUES (?,?,?)";
+        try {
+            PreparedStatement statement = koneksi.getConnection().prepareStatement(query);
+            statement.setString(1, getPemain());
+            statement.setInt(2, getDana());
+            statement.setInt(3, getTurn());
+
+            int row = statement.executeUpdate();
+            if (row > 0) {
+                return true;
+            }
+            statement.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(koneksi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public int getIdPemain() {
+
+        String query = "select max(id_pemain) FROM `pemain` WHERE nama=? and dana=? and turn=?";
+
+        try {
+            PreparedStatement statement = koneksi.getConnection().prepareStatement(query);
+            statement.setString(1, getPemain());
+            statement.setInt(2, getDana());
+            statement.setInt(3, getTurn());
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(koneksi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
 }

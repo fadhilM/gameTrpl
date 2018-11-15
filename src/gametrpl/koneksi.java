@@ -17,36 +17,16 @@ import java.sql.Statement;
  */
 public class koneksi {
     
-    private Connection koneksi;
-    private Statement stm;
+    private static Connection connection = null;
 
-    public koneksi() {
-
-    }
-
-    public Connection getKoneksi() throws SQLException {
-        if (koneksi == null) {
-            String database = "gameTrpl";
-            String username = "root";
-            String password = "";
-            try {
-                koneksi = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/"
-                        + database, username, password);
-                stm = koneksi.createStatement();
-                System.out.println("koneksi berhasil");
-            } catch (SQLException e) {
-                e.printStackTrace();
-                e.getMessage();
-            }
+    public static Connection getConnection() throws SQLException {
+        if(connection == null){
+            connection = DriverManager.getConnection(
+              "jdbc:mysql://localhost:3306/debt_simulator",
+              "root",
+              ""
+              );
         }
-        return koneksi;
-    }
-    
-    public void execute(String sql) throws SQLException {
-        this.stm.executeUpdate(sql);
-    }
-
-    public ResultSet getResult(String sql) throws SQLException {
-        return stm.executeQuery(sql);
+        return connection;
     }
 }

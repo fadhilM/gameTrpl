@@ -111,6 +111,12 @@ public class halamanBankKalku extends javax.swing.JFrame {
     public JLabel getPropertyTxt() {
         return propertyTxt;
     }
+
+    public JButton getB_kembali() {
+        return b_kembali;
+    }
+    
+    
     
     
     
@@ -147,6 +153,7 @@ public class halamanBankKalku extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        b_kembali = new javax.swing.JButton();
         b_nextTurn = new javax.swing.JButton();
         b_usaha = new javax.swing.JButton();
         b_bank = new javax.swing.JButton();
@@ -255,6 +262,11 @@ public class halamanBankKalku extends javax.swing.JFrame {
         jLabel15.setPreferredSize(new java.awt.Dimension(1050, 780));
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
 
+        b_kembali.setText("jButton1");
+        b_kembali.setBorderPainted(false);
+        b_kembali.setContentAreaFilled(false);
+        getContentPane().add(b_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 40));
+
         b_nextTurn.setText("next turn");
         b_nextTurn.setBorderPainted(false);
         b_nextTurn.setContentAreaFilled(false);
@@ -291,6 +303,7 @@ public class halamanBankKalku extends javax.swing.JFrame {
         getContentPane().add(b_kalkulasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 160, 50));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -332,6 +345,7 @@ public class halamanBankKalku extends javax.swing.JFrame {
     private javax.swing.JButton b_bank;
     private javax.swing.JButton b_dealer;
     private javax.swing.JButton b_kalkulasi;
+    private javax.swing.JButton b_kembali;
     private javax.swing.JButton b_nextTurn;
     private javax.swing.JButton b_pinjam;
     private javax.swing.JButton b_property;

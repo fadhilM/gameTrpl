@@ -52,6 +52,7 @@ public class c_Main {
     private class klikLoad implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent ae) {
+            halamanMain.dispose();
             c_loadGame = new c_loadGame();
         }
     }

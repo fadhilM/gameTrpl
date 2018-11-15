@@ -12,6 +12,7 @@ import gametrpl.pemain;
 import gametrpl.Controller.c_usaha;
 import gametrpl.Controller.c_property;
 import gametrpl.Controller.c_dealer;
+import gametrpl.Controller.c_mainMenu;
 import gametrpl.View.halamanBankAwal;
 import gametrpl.View.halamanBankJaminan;
 import gametrpl.View.halamanBankKalku;
@@ -29,13 +30,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ROG
  */
-public class c_bank {
+public class c_bank extends controller{
 
     utang utang;
-    pemain pemain;
     property property;
     kendaraan kendaraan;
     byte awal = 1;
+    c_mainMenu c_mainMenu;
 
     c_usaha c_usaha;
     c_property c_property;
@@ -54,13 +55,17 @@ public class c_bank {
         halamanBankAwal.getB_dealer().addActionListener(new klikDealer());
         halamanBankAwal.getB_property().addActionListener(new klikProperty());
         halamanBankAwal.getB_usaha().addActionListener(new klikUsaha());
+        halamanBankAwal.getB_kembali().addActionListener(new klikKembali());
         halamanBankJaminan.getB_bank().addActionListener(new klikBank());
         halamanBankJaminan.getB_dealer().addActionListener(new klikDealer());
         halamanBankJaminan.getB_property().addActionListener(new klikProperty());
         halamanBankJaminan.getB_usaha().addActionListener(new klikUsaha());
+        halamanBankJaminan.getB_kembali().addActionListener(new klikKembali());
         halamanBankKalku.getB_usaha().addActionListener(new klikUsaha());
         halamanBankKalku.getB_bank().addActionListener(new klikBank());
         halamanBankKalku.getB_dealer().addActionListener(new klikDealer());
+        halamanBankKalku.getB_kembali().addActionListener(new klikKembali());
+        
 
         halamanBankAwal.getB_pinjam().addActionListener(new klikPinjam());
         halamanBankKalku.getB_pinjam().addActionListener(new klikPinjam());
@@ -149,65 +154,6 @@ public class c_bank {
 
     }
 
-    private int randomPersen(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
-
-    public int hitungPenghasilan() {
-        int penghasilan, penghasilanSeluruh = 0, penghasilanKotor, penghasilanBersih, operasional, persen = 0;
-        usaha[] usahaPemain = pemain.getUsaha();
-        for (int i = 0; i < usahaPemain.length; i++) {
-            //generate angka random berdasarkan trend usaha
-            if (usahaPemain[i].isBoostP()) {
-                persen = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0] - usahaPemain[i].getPersenUp(), usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
-
-                usahaPemain[i].setTempP(usahaPemain[i].getTempP() - 1);
-                if (usahaPemain[i].getTempP() == 0) {
-                    usahaPemain[i].setBoostP(false);
-                    usahaPemain[i].setTempP(usahaPemain[i].getP());
-                }
-            } else {
-                persen = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0], usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
-            }
-
-            penghasilan = usahaPemain[i].getPenghasilan();
-            int minPlusPenghasilan = persen * penghasilan / 100;
-            penghasilanKotor = penghasilan - minPlusPenghasilan;
-
-            usahaPemain[i].setPenghasilan(penghasilanKotor);
-
-            operasional = usahaPemain[i].getOperasional();
-            if (usahaPemain[i].isBoostO()) {
-                int persenB = ThreadLocalRandom.current().nextInt(-15, -5 - 1);
-                operasional = operasional - (operasional * persenB / 100);
-                usahaPemain[i].setTempO(usahaPemain[i].getTempO() - 1);
-                if (usahaPemain[i].getTempO() == 0) {
-                    usahaPemain[i].setBoostO(false);
-                    usahaPemain[i].setTempO(usahaPemain[i].getO());
-                }
-            }
-
-            if (usahaPemain[i].isBoostS()) {
-                int persenP = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0], usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
-                int persenO = ThreadLocalRandom.current().nextInt(-5, -15 - 1);
-                int penghasilanB = penghasilan * persenP / 100;
-                penghasilanKotor = penghasilanKotor + penghasilanB;
-                operasional = operasional - (operasional * persenO / 100);
-                usahaPemain[i].setTempS(usahaPemain[i].getTempS() - 1);
-                if (usahaPemain[i].getTempS() > 1) {
-                    usahaPemain[i].setBoostS(false);
-                    usahaPemain[i].setTempS(usahaPemain[i].getS());
-                }
-            }
-
-            penghasilanBersih = penghasilanKotor - operasional;
-            penghasilanSeluruh += penghasilanBersih;
-
-        }
-        pemain.setUsaha(usahaPemain);
-        return penghasilanSeluruh;
-    }
-
     public void popup(String popup) {
         JOptionPane.showMessageDialog(halamanBankAwal, popup);
     }
@@ -246,6 +192,25 @@ public class c_bank {
         halamanBankKalku.getPropertyTxt().setText(String.valueOf(pemain.getJumlahProperty()));
     }
 
+    private class klikKembali implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            int save = JOptionPane.showConfirmDialog(null, "Apakah Anda Ingin Menyimpan Progress Game Sebelum Kembali", "Perhatian", JOptionPane.YES_NO_OPTION);
+            if (save == JOptionPane.YES_OPTION) {
+                save();
+            }
+            if (awal==1) {
+                halamanBankAwal.dispose();
+            }else if(awal==2){
+                halamanBankJaminan.dispose();
+            }else{
+                halamanBankKalku.dispose();
+            }
+            c_mainMenu = new c_mainMenu();
+        }
+    }
+
     private class klikNextTurn implements ActionListener {
 
         public klikNextTurn() {
@@ -254,12 +219,11 @@ public class c_bank {
         @Override
         public void actionPerformed(ActionEvent ae) {
             pemain.setPenghasilan(hitungPenghasilan());
-            pemain.setDana(pemain.getDana() + pemain.getPenghasilan());
-            if (pemain.getBulan() > 12) {
-                pemain.setBulan(pemain.getBulan() + 1);
-            } else {
-                pemain.setBulan(0);
+            if (pemain.isBencana()) {
+                popup("Penghasilan Bulan Ini Berkurang Sebanyak " + pemain.getPersen() + " untuk Melakukan Perbaikan Disebabkan Oleh " + pemain.getTipeBencana());
+                pemain.endBencana();
             }
+            pemain.setDana(pemain.getDana() + pemain.getPenghasilan());
             if (pemain.getUtang() != null) {
                 if (pemain.getDana() > pemain.getUtang().getAngsuran()) {
                     pemain.setDana((int) (pemain.getDana() - pemain.getUtang().getAngsuran()));

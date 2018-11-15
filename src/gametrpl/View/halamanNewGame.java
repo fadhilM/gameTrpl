@@ -70,6 +70,7 @@ public class halamanNewGame extends javax.swing.JFrame {
         getContentPane().add(b_mulai, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 300, 80));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

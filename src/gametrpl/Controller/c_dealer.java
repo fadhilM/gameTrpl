@@ -10,6 +10,7 @@ import gametrpl.kendaraan;
 import gametrpl.Controller.c_usaha;
 import gametrpl.Controller.c_property;
 import gametrpl.Controller.c_bank;
+import gametrpl.Controller.c_mainMenu;
 import gametrpl.View.dealer;
 import gametrpl.usaha;
 import gametrpl.utang;
@@ -25,13 +26,12 @@ import javax.swing.JOptionPane;
  * @author ROG
  */
 public class c_dealer extends controller {
-
-    pemain pemain;
     dealer dealer;
     kendaraan beli;
     c_usaha c_usaha;
     c_property c_property;
     c_bank c_bank;
+    c_mainMenu c_mainMenu;
 
     String[] daftarKendaraan;
 
@@ -76,6 +76,7 @@ public class c_dealer extends controller {
         dealer.getBeliKendaraan8().addActionListener(new bK8());
         dealer.getB_beli().addActionListener(new klikBeli());
         dealer.getB_nextTurn().addActionListener(new klikNextTurn());
+        dealer.getB_kembali().addActionListener(new klikKembali());
     }
 
     private void pesen(kendaraan kendaraan) {
@@ -96,65 +97,6 @@ public class c_dealer extends controller {
     }
      public void updateProperty() {
         dealer.getPropertyTxt().setText(String.valueOf(pemain.getJumlahProperty()));
-    }
-
-    private int randomPersen(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
-
-    public int hitungPenghasilan() {
-        int penghasilan, penghasilanSeluruh = 0, penghasilanKotor, penghasilanBersih, operasional, persen = 0;
-        usaha[] usahaPemain = pemain.getUsaha();
-        for (int i = 0; i < usahaPemain.length; i++) {
-            //generate angka random berdasarkan trend usaha
-            if (usahaPemain[i].isBoostP()) {
-                persen = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0] - usahaPemain[i].getPersenUp(), usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
-
-                usahaPemain[i].setTempP(usahaPemain[i].getTempP() - 1);
-                if (usahaPemain[i].getTempP() == 0) {
-                    usahaPemain[i].setBoostP(false);
-                    usahaPemain[i].setTempP(usahaPemain[i].getP());
-                }
-            } else {
-                persen = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0], usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
-            }
-
-            penghasilan = usahaPemain[i].getPenghasilan();
-            int minPlusPenghasilan = persen * penghasilan / 100;
-            penghasilanKotor = penghasilan - minPlusPenghasilan;
-
-            usahaPemain[i].setPenghasilan(penghasilanKotor);
-
-            operasional = usahaPemain[i].getOperasional();
-            if (usahaPemain[i].isBoostO()) {
-                int persenB = ThreadLocalRandom.current().nextInt(-15, -5 - 1);
-                operasional = operasional - (operasional * persenB / 100);
-                usahaPemain[i].setTempO(usahaPemain[i].getTempO() - 1);
-                if (usahaPemain[i].getTempO() == 0) {
-                    usahaPemain[i].setBoostO(false);
-                    usahaPemain[i].setTempO(usahaPemain[i].getO());
-                }
-            }
-
-            if (usahaPemain[i].isBoostS()) {
-                int persenP = randomPersen(usahaPemain[i].getMinMax()[pemain.getBulan()][0], usahaPemain[i].getMinMax()[pemain.getBulan()][1] + 1);
-                int persenO = ThreadLocalRandom.current().nextInt(-5, -15 - 1);
-                int penghasilanB = penghasilan * persenP / 100;
-                penghasilanKotor = penghasilanKotor + penghasilanB;
-                operasional = operasional - (operasional * persenO / 100);
-                usahaPemain[i].setTempS(usahaPemain[i].getTempS() - 1);
-                if (usahaPemain[i].getTempS() > 1) {
-                    usahaPemain[i].setBoostS(false);
-                    usahaPemain[i].setTempS(usahaPemain[i].getS());
-                }
-            }
-
-            penghasilanBersih = penghasilanKotor - operasional;
-            penghasilanSeluruh += penghasilanBersih;
-
-        }
-        pemain.setUsaha(usahaPemain);
-        return penghasilanSeluruh;
     }
 
     public void updatePenghasilan() {
@@ -184,6 +126,19 @@ public class c_dealer extends controller {
         dealer.getTurnTxt().setText(String.valueOf(pemain.getTurn()));
     }
 
+    private class klikKembali implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+           int save = JOptionPane.showConfirmDialog(null, "Apakah Anda Ingin Menyimpan Progress Game Sebelum Kembali", "Perhatian", JOptionPane.YES_NO_OPTION);
+            if (save == JOptionPane.YES_OPTION) {
+                save();
+            }
+            dealer.dispose();
+            c_mainMenu = new c_mainMenu();
+        }
+    }
+
     private class klikBank implements ActionListener {
 
         @Override
@@ -207,16 +162,16 @@ public class c_dealer extends controller {
         @Override
         public void actionPerformed(ActionEvent ae) {
             pemain.setPenghasilan(hitungPenghasilan());
-            pemain.setDana(pemain.getDana() + pemain.getPenghasilan());
-            if (pemain.getBulan() > 12) {
-                pemain.setBulan(pemain.getBulan() + 1);
-            } else {
-                pemain.setBulan(0);
+            if (pemain.isBencana()) {
+                popup("Penghasilan Bulan Ini Berkurang Sebanyak " + pemain.getPersen() + " untuk Melakukan Perbaikan Disebabkan Oleh " + pemain.getTipeBencana());
+                pemain.endBencana();
             }
+            pemain.setDana(pemain.getDana() + pemain.getPenghasilan());
             if (pemain.getUtang() != null) {
                 if (pemain.getDana() > pemain.getUtang().getAngsuran()) {
                     pemain.setDana((int) (pemain.getDana() - pemain.getUtang().getAngsuran()));
                     pemain.getUtang().bayarUtang();
+                    System.out.println(String.valueOf(pemain.getUtang().getUtang()));
                     if (pemain.getUtang().getTotalPembayaran() < 1) {
                         utang utang = null;
                         pemain.setUtang(utang);

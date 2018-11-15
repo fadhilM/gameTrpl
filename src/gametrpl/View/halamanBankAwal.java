@@ -96,6 +96,12 @@ public class halamanBankAwal extends javax.swing.JFrame {
     public JLabel getTurnTxt() {
         return turnTxt;
     }
+
+    public JButton getB_kembali() {
+        return b_kembali;
+    }
+    
+    
     
     
 
@@ -116,6 +122,7 @@ public class halamanBankAwal extends javax.swing.JFrame {
         kendaraanTxt = new javax.swing.JLabel();
         propertyTxt = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        b_kembali = new javax.swing.JButton();
         b_usaha = new javax.swing.JButton();
         b_bank = new javax.swing.JButton();
         b_dealer = new javax.swing.JButton();
@@ -155,6 +162,11 @@ public class halamanBankAwal extends javax.swing.JFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/Halaman Jaminan.png"))); // NOI18N
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        b_kembali.setText("jButton1");
+        b_kembali.setBorderPainted(false);
+        b_kembali.setContentAreaFilled(false);
+        getContentPane().add(b_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 50));
+
         b_usaha.setText("jButton1");
         b_usaha.setBorderPainted(false);
         b_usaha.setContentAreaFilled(false);
@@ -192,6 +204,7 @@ public class halamanBankAwal extends javax.swing.JFrame {
         getContentPane().add(b_hitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 674, 160, 50));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -234,6 +247,7 @@ public class halamanBankAwal extends javax.swing.JFrame {
     private javax.swing.JButton b_bank;
     private javax.swing.JButton b_dealer;
     private javax.swing.JButton b_hitung;
+    private javax.swing.JButton b_kembali;
     private javax.swing.JButton b_nextTurn;
     private javax.swing.JButton b_pinjam;
     private javax.swing.JButton b_property;

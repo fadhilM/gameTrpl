@@ -10,7 +10,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -367,9 +367,22 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="javax.swing.JButton" name="b_kembali">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="10" y="10" width="90" height="50"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JButton" name="b_buatUsaha1">
       <Properties>
         <Property name="text" type="java.lang.String" value="buat"/>
+        <Property name="toolTipText" type="java.lang.String" value="Buat Usaha"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -382,6 +395,7 @@
     <Component class="javax.swing.JButton" name="b_buatUsaha2">
       <Properties>
         <Property name="text" type="java.lang.String" value="buat"/>
+        <Property name="toolTipText" type="java.lang.String" value="Buat Usaha"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -394,6 +408,7 @@
     <Component class="javax.swing.JButton" name="b_buatUsaha3">
       <Properties>
         <Property name="text" type="java.lang.String" value="buat"/>
+        <Property name="toolTipText" type="java.lang.String" value="Buat Usaha"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -406,6 +421,7 @@
     <Component class="javax.swing.JButton" name="b_buatUsaha4">
       <Properties>
         <Property name="text" type="java.lang.String" value="buat"/>
+        <Property name="toolTipText" type="java.lang.String" value="Buat Usaha"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="defaultCapable" type="boolean" value="false"/>
       </Properties>
@@ -418,6 +434,7 @@
     <Component class="javax.swing.JButton" name="b_nextTurn">
       <Properties>
         <Property name="text" type="java.lang.String" value="next turn"/>
+        <Property name="toolTipText" type="java.lang.String" value="Turn Selanjutnya"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -445,6 +462,7 @@
     <Component class="javax.swing.JButton" name="b_bank">
       <Properties>
         <Property name="text" type="java.lang.String" value="bank"/>
+        <Property name="toolTipText" type="java.lang.String" value="Bank"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -457,6 +475,7 @@
     <Component class="javax.swing.JButton" name="b_dealer">
       <Properties>
         <Property name="text" type="java.lang.String" value="dealer"/>
+        <Property name="toolTipText" type="java.lang.String" value="Dealer"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -481,6 +500,7 @@
     <Component class="javax.swing.JButton" name="aa">
       <Properties>
         <Property name="text" type="java.lang.String" value="aa"/>
+        <Property name="toolTipText" type="java.lang.String" value="Upgrade Penghasilan"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -496,6 +516,7 @@
     <Component class="javax.swing.JButton" name="ab">
       <Properties>
         <Property name="text" type="java.lang.String" value="ab"/>
+        <Property name="toolTipText" type="java.lang.String" value="Upgrade Perawatan"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -544,6 +565,7 @@
     <Component class="javax.swing.JButton" name="ba">
       <Properties>
         <Property name="text" type="java.lang.String" value="ba"/>
+        <Property name="toolTipText" type="java.lang.String" value="Upgrade Penghasilan"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -556,6 +578,7 @@
     <Component class="javax.swing.JButton" name="bb">
       <Properties>
         <Property name="text" type="java.lang.String" value="bb"/>
+        <Property name="toolTipText" type="java.lang.String" value="Upgrade Perawatan"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -604,6 +627,7 @@
     <Component class="javax.swing.JButton" name="ca">
       <Properties>
         <Property name="text" type="java.lang.String" value="ca"/>
+        <Property name="toolTipText" type="java.lang.String" value="Upgrade Penghasilan"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -616,6 +640,7 @@
     <Component class="javax.swing.JButton" name="cb">
       <Properties>
         <Property name="text" type="java.lang.String" value="cb"/>
+        <Property name="toolTipText" type="java.lang.String" value="Upgrade Perawatan"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -664,6 +689,7 @@
     <Component class="javax.swing.JButton" name="da">
       <Properties>
         <Property name="text" type="java.lang.String" value="da"/>
+        <Property name="toolTipText" type="java.lang.String" value="Upgrade Penghasilan"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -676,6 +702,7 @@
     <Component class="javax.swing.JButton" name="db">
       <Properties>
         <Property name="text" type="java.lang.String" value="db"/>
+        <Property name="toolTipText" type="java.lang.String" value="Upgrade Perawatan"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>

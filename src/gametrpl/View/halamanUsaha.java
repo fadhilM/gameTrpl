@@ -25,6 +25,10 @@ public class halamanUsaha extends javax.swing.JFrame {
         return aa;
     }
 
+    public JButton getB_kembali() {
+        return b_kembali;
+    }
+
     public JButton getAb() {
         return ab;
     }
@@ -340,6 +344,7 @@ public class halamanUsaha extends javax.swing.JFrame {
         kendaraanTxt = new javax.swing.JLabel();
         propertyTxt = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        b_kembali = new javax.swing.JButton();
         b_buatUsaha1 = new javax.swing.JButton();
         b_buatUsaha2 = new javax.swing.JButton();
         b_buatUsaha3 = new javax.swing.JButton();
@@ -443,27 +448,37 @@ public class halamanUsaha extends javax.swing.JFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/Halaman Main New.png"))); // NOI18N
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        b_kembali.setText("jButton1");
+        b_kembali.setBorderPainted(false);
+        b_kembali.setContentAreaFilled(false);
+        getContentPane().add(b_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 50));
+
         b_buatUsaha1.setText("buat");
+        b_buatUsaha1.setToolTipText("Buat Usaha");
         b_buatUsaha1.setBorderPainted(false);
         b_buatUsaha1.setContentAreaFilled(false);
         getContentPane().add(b_buatUsaha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 110, 30));
 
         b_buatUsaha2.setText("buat");
+        b_buatUsaha2.setToolTipText("Buat Usaha");
         b_buatUsaha2.setBorderPainted(false);
         b_buatUsaha2.setContentAreaFilled(false);
         getContentPane().add(b_buatUsaha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 295, 110, 40));
 
         b_buatUsaha3.setText("buat");
+        b_buatUsaha3.setToolTipText("Buat Usaha");
         b_buatUsaha3.setBorderPainted(false);
         b_buatUsaha3.setContentAreaFilled(false);
         getContentPane().add(b_buatUsaha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 590, 110, 40));
 
         b_buatUsaha4.setText("buat");
+        b_buatUsaha4.setToolTipText("Buat Usaha");
         b_buatUsaha4.setContentAreaFilled(false);
         b_buatUsaha4.setDefaultCapable(false);
         getContentPane().add(b_buatUsaha4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 595, 110, 30));
 
         b_nextTurn.setText("next turn");
+        b_nextTurn.setToolTipText("Turn Selanjutnya");
         b_nextTurn.setBorderPainted(false);
         b_nextTurn.setContentAreaFilled(false);
         getContentPane().add(b_nextTurn, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 6, 130, 130));
@@ -479,11 +494,13 @@ public class halamanUsaha extends javax.swing.JFrame {
         getContentPane().add(b_usaha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 150, 130));
 
         b_bank.setText("bank");
+        b_bank.setToolTipText("Bank");
         b_bank.setBorderPainted(false);
         b_bank.setContentAreaFilled(false);
         getContentPane().add(b_bank, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 235, 150, 130));
 
         b_dealer.setText("dealer");
+        b_dealer.setToolTipText("Dealer");
         b_dealer.setBorderPainted(false);
         b_dealer.setContentAreaFilled(false);
         getContentPane().add(b_dealer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 395, 160, 130));
@@ -494,12 +511,14 @@ public class halamanUsaha extends javax.swing.JFrame {
         getContentPane().add(b_property, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 140, 130));
 
         aa.setText("aa");
+        aa.setToolTipText("Upgrade Penghasilan");
         aa.setBorderPainted(false);
         aa.setContentAreaFilled(false);
         aa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(aa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 308, 50, 50));
 
         ab.setText("ab");
+        ab.setToolTipText("Upgrade Perawatan");
         ab.setBorderPainted(false);
         ab.setContentAreaFilled(false);
         getContentPane().add(ab, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, 50));
@@ -520,11 +539,13 @@ public class halamanUsaha extends javax.swing.JFrame {
         getContentPane().add(ae, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 358, -1, 50));
 
         ba.setText("ba");
+        ba.setToolTipText("Upgrade Penghasilan");
         ba.setBorderPainted(false);
         ba.setContentAreaFilled(false);
         getContentPane().add(ba, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 60, 50));
 
         bb.setText("bb");
+        bb.setToolTipText("Upgrade Perawatan");
         bb.setBorderPainted(false);
         bb.setContentAreaFilled(false);
         getContentPane().add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 50, 50));
@@ -545,11 +566,13 @@ public class halamanUsaha extends javax.swing.JFrame {
         getContentPane().add(be, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 358, -1, 50));
 
         ca.setText("ca");
+        ca.setToolTipText("Upgrade Penghasilan");
         ca.setBorderPainted(false);
         ca.setContentAreaFilled(false);
         getContentPane().add(ca, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 610, -1, 38));
 
         cb.setText("cb");
+        cb.setToolTipText("Upgrade Perawatan");
         cb.setBorderPainted(false);
         cb.setContentAreaFilled(false);
         getContentPane().add(cb, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 660, -1, 38));
@@ -570,11 +593,13 @@ public class halamanUsaha extends javax.swing.JFrame {
         getContentPane().add(ce, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 660, -1, 38));
 
         da.setText("da");
+        da.setToolTipText("Upgrade Penghasilan");
         da.setBorderPainted(false);
         da.setContentAreaFilled(false);
         getContentPane().add(da, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 610, -1, 38));
 
         db.setText("db");
+        db.setToolTipText("Upgrade Perawatan");
         db.setBorderPainted(false);
         db.setContentAreaFilled(false);
         getContentPane().add(db, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 660, -1, 38));
@@ -595,6 +620,7 @@ public class halamanUsaha extends javax.swing.JFrame {
         getContentPane().add(de, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 660, -1, 38));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void b_usahaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_usahaActionPerformed
@@ -650,6 +676,7 @@ public class halamanUsaha extends javax.swing.JFrame {
     private javax.swing.JButton b_buatUsaha3;
     private javax.swing.JButton b_buatUsaha4;
     private javax.swing.JButton b_dealer;
+    private javax.swing.JButton b_kembali;
     private javax.swing.JButton b_nextTurn;
     private javax.swing.JButton b_property;
     private javax.swing.JButton b_usaha;

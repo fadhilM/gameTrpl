@@ -60,6 +60,7 @@ public class mainMenu extends javax.swing.JFrame {
         getContentPane().add(b_caraMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 250, 50));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

@@ -146,6 +146,12 @@ public class halamanBankJaminan extends javax.swing.JFrame {
     public JLabel getTurnTxt() {
         return turnTxt;
     }
+
+    public JButton getB_kembali() {
+        return b_kembali;
+    }
+    
+    
     
     
     
@@ -168,8 +174,6 @@ public class halamanBankJaminan extends javax.swing.JFrame {
         tenor2 = new javax.swing.JRadioButton();
         tenor3 = new javax.swing.JRadioButton();
         tenor4 = new javax.swing.JRadioButton();
-        pilihJaminanP = new javax.swing.JButton();
-        pilihJaminanK = new javax.swing.JButton();
         merkText = new javax.swing.JLabel();
         pinjamanText = new javax.swing.JLabel();
         danaTxt = new javax.swing.JLabel();
@@ -181,6 +185,9 @@ public class halamanBankJaminan extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        b_kembali = new javax.swing.JButton();
+        pilihJaminanP = new javax.swing.JButton();
+        pilihJaminanK = new javax.swing.JButton();
         b_nextTurn = new javax.swing.JButton();
         b_usaha = new javax.swing.JButton();
         b_bank = new javax.swing.JButton();
@@ -190,9 +197,7 @@ public class halamanBankJaminan extends javax.swing.JFrame {
         b_hitung = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1050, 790));
         setMinimumSize(new java.awt.Dimension(1050, 790));
-        setPreferredSize(new java.awt.Dimension(1050, 790));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -217,7 +222,7 @@ public class halamanBankJaminan extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabelPropertyJ);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 160, 400, 280));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 160, 400, 280));
 
         tabelKendaraanJ.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -247,7 +252,7 @@ public class halamanBankJaminan extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tabelKendaraanJ);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 380, 280));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 380, 280));
 
         tenor.add(tenor1);
         tenor1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -272,12 +277,6 @@ public class halamanBankJaminan extends javax.swing.JFrame {
         tenor4.setText("48 Turn");
         tenor4.setContentAreaFilled(false);
         getContentPane().add(tenor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 590, -1, -1));
-
-        pilihJaminanP.setText("Pilih Jaminan");
-        getContentPane().add(pilihJaminanP, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 470, 130, 30));
-
-        pilihJaminanK.setText("Pilih Jaminan");
-        getContentPane().add(pilihJaminanK, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, 130, 30));
 
         merkText.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         getContentPane().add(merkText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 510, 250, 20));
@@ -318,11 +317,26 @@ public class halamanBankJaminan extends javax.swing.JFrame {
         jLabel2.setText("Lama Waktu Pembayaran :");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, -1, -1));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/Halaman Jaminan.png"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gametrpl/gambar/Pilih Jaminan.png"))); // NOI18N
         jLabel15.setMaximumSize(new java.awt.Dimension(1050, 780));
         jLabel15.setMinimumSize(new java.awt.Dimension(1050, 780));
         jLabel15.setPreferredSize(new java.awt.Dimension(1050, 780));
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
+
+        b_kembali.setText("jButton1");
+        b_kembali.setBorderPainted(false);
+        b_kembali.setContentAreaFilled(false);
+        getContentPane().add(b_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 90, 40));
+
+        pilihJaminanP.setText("Pilih Jaminan");
+        pilihJaminanP.setBorderPainted(false);
+        pilihJaminanP.setContentAreaFilled(false);
+        getContentPane().add(pilihJaminanP, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 450, 170, 60));
+
+        pilihJaminanK.setText("Pilih Jaminan");
+        pilihJaminanK.setBorderPainted(false);
+        pilihJaminanK.setContentAreaFilled(false);
+        getContentPane().add(pilihJaminanK, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, 170, 60));
 
         b_nextTurn.setText("next turn");
         b_nextTurn.setBorderPainted(false);
@@ -360,6 +374,7 @@ public class halamanBankJaminan extends javax.swing.JFrame {
         getContentPane().add(b_hitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 670, 160, 50));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -401,6 +416,7 @@ public class halamanBankJaminan extends javax.swing.JFrame {
     private javax.swing.JButton b_bank;
     private javax.swing.JButton b_dealer;
     private javax.swing.JButton b_hitung;
+    private javax.swing.JButton b_kembali;
     private javax.swing.JButton b_nextTurn;
     private javax.swing.JButton b_pinjam;
     private javax.swing.JButton b_property;
